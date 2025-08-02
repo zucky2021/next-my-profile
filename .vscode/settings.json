@@ -1,0 +1,11 @@
+{
+  "files.autoSave": "afterDelay",
+  "editor.renderWhitespace": "boundary",
+  "editor.insertSpaces": true,
+  "editor.tabSize": 2,
+  "[markdown]": {
+    "editor.defaultFormatter": "DavidAnson.vscode-markdownlint"
+  },
+  "editor.formatOnPaste": true,
+  "editor.formatOnSave": true
+}
