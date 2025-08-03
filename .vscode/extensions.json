@@ -1,6 +1,7 @@
 {
   "recommendations": [
     "streetsidesoftware.code-spell-checker",
-    "eamodio.gitlens"
+    "eamodio.gitlens",
+    "github.vscode-pull-request-github"
   ]
 }
