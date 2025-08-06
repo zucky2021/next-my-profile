@@ -1,6 +1,8 @@
 import { Metadata } from 'next'
 import Link from 'next/link'
 import { notFound } from 'next/navigation'
+import ReactMarkdown from 'react-markdown'
+import remarkGfm from 'remark-gfm'
 
 type Props = {
   params: { id: string }
@@ -26,56 +28,72 @@ const blogPosts: BlogPost[] = [
     title: 'Next.js 14の新機能とベストプラクティス',
     excerpt: 'Next.js 14で導入された新機能について詳しく解説し、実際のプロジェクトでの活用方法を紹介します。',
     content: `
-      <h2>はじめに</h2>
-      <p>Next.js 14は、Reactアプリケーションの開発をより効率的にするための多くの新機能を導入しました。この記事では、主要な新機能とその活用方法について詳しく解説します。</p>
-      
-      <h2>App Routerの改善</h2>
-      <p>App Routerは、Next.js 13で導入された新しいルーティングシステムですが、14ではさらに改善されています。Server ComponentsとClient Componentsの使い分けがより明確になり、パフォーマンスが向上しました。</p>
-      
-      <h3>Server Componentsの活用</h3>
-      <p>Server Componentsを使用することで、サーバーサイドでレンダリングされるコンポーネントを作成できます。これにより、クライアントサイドのJavaScriptバンドルサイズを削減し、初期読み込み速度を向上させることができます。</p>
-      
-      <pre><code>// Server Componentの例
+# はじめに
+
+Next.js 14は、Reactアプリケーションの開発をより効率的にするための多くの新機能を導入しました。この記事では、主要な新機能とその活用方法について詳しく解説します。
+
+## App Routerの改善
+
+App Routerは、Next.js 13で導入された新しいルーティングシステムですが、14ではさらに改善されています。Server ComponentsとClient Componentsの使い分けがより明確になり、パフォーマンスが向上しました。
+
+### Server Componentsの活用
+
+Server Componentsを使用することで、サーバーサイドでレンダリングされるコンポーネントを作成できます。これにより、クライアントサイドのJavaScriptバンドルサイズを削減し、初期読み込み速度を向上させることができます。
+
+\`\`\`javascript
+// Server Componentの例
 export default function ServerComponent() {
   const data = await fetchData() // サーバーサイドで実行
-  return &lt;div&gt;{data}&lt;/div&gt;
-}</code></pre>
-      
-      <h2>Turbopackの安定化</h2>
-      <p>Turbopackは、Rustで書かれた高速なバンドラーで、Webpackの代替として開発されています。Next.js 14では、Turbopackがより安定し、多くのプロジェクトで使用できるようになりました。</p>
-      
-      <h3>パフォーマンスの向上</h3>
-      <p>Turbopackを使用することで、開発時のホットリロードが大幅に高速化されます。また、本番ビルドでもパフォーマンスが向上し、バンドルサイズが最適化されます。</p>
-      
-      <h2>Partial Prerendering</h2>
-      <p>Partial Prerenderingは、静的コンテンツと動的コンテンツを組み合わせて、最適なパフォーマンスを実現する機能です。</p>
-      
-      <h3>実装例</h3>
-      <pre><code>// 静的コンテンツと動的コンテンツの組み合わせ
+  return <div>{data}</div>
+}
+\`\`\`
+
+## Turbopackの安定化
+
+Turbopackは、Rustで書かれた高速なバンドラーで、Webpackの代替として開発されています。Next.js 14では、Turbopackがより安定し、多くのプロジェクトで使用できるようになりました。
+
+### パフォーマンスの向上
+
+Turbopackを使用することで、開発時のホットリロードが大幅に高速化されます。また、本番ビルドでもパフォーマンスが向上し、バンドルサイズが最適化されます。
+
+## Partial Prerendering
+
+Partial Prerenderingは、静的コンテンツと動的コンテンツを組み合わせて、最適なパフォーマンスを実現する機能です。
+
+### 実装例
+
+\`\`\`javascript
+// 静的コンテンツと動的コンテンツの組み合わせ
 export default function Page() {
   return (
-    &lt;div&gt;
-      &lt;StaticHeader /&gt; {/* 静的 */}
-      &lt;DynamicContent /&gt; {/* 動的 */}
-      &lt;StaticFooter /&gt; {/* 静的 */}
-    &lt;/div&gt;
+    <div>
+      <StaticHeader /> {/* 静的 */}
+      <DynamicContent /> {/* 動的 */}
+      <StaticFooter /> {/* 静的 */}
+    </div>
   )
-}</code></pre>
-      
-      <h2>ベストプラクティス</h2>
-      <p>Next.js 14を効果的に活用するためのベストプラクティスを紹介します。</p>
-      
-      <h3>1. Server Componentsを優先的に使用</h3>
-      <p>可能な限りServer Componentsを使用し、クライアントサイドのJavaScriptを最小限に抑えましょう。</p>
-      
-      <h3>2. 適切なキャッシュ戦略</h3>
-      <p>fetch APIを使用してデータを取得する際は、適切なキャッシュ戦略を設定しましょう。</p>
-      
-      <h3>3. 画像の最適化</h3>
-      <p>next/imageコンポーネントを使用して、画像の最適化を行いましょう。</p>
-      
-      <h2>まとめ</h2>
-      <p>Next.js 14は、パフォーマンスと開発体験の両方を向上させる多くの新機能を提供しています。これらの機能を適切に活用することで、より高速で保守性の高いアプリケーションを構築できます。</p>
+}
+\`\`\`
+
+## ベストプラクティス
+
+Next.js 14を効果的に活用するためのベストプラクティスを紹介します。
+
+### 1. Server Componentsを優先的に使用
+
+可能な限りServer Componentsを使用し、クライアントサイドのJavaScriptを最小限に抑えましょう。
+
+### 2. 適切なキャッシュ戦略
+
+fetch APIを使用してデータを取得する際は、適切なキャッシュ戦略を設定しましょう。
+
+### 3. 画像の最適化
+
+next/imageコンポーネントを使用して、画像の最適化を行いましょう。
+
+## まとめ
+
+Next.js 14は、パフォーマンスと開発体験の両方を向上させる多くの新機能を提供しています。これらの機能を適切に活用することで、より高速で保守性の高いアプリケーションを構築できます。
     `,
     date: '2024-01-15',
     category: 'フロントエンド',
@@ -88,13 +106,16 @@ export default function Page() {
     title: 'TypeScriptで型安全なAPIクライアントを構築する',
     excerpt: 'TypeScriptを使用して型安全なAPIクライアントを構築する方法と、実際のプロジェクトでの活用例を紹介します。',
     content: `
-      <h2>はじめに</h2>
-      <p>TypeScriptを使用することで、APIクライアントの型安全性を確保し、開発時のエラーを減らすことができます。この記事では、型安全なAPIクライアントの構築方法について詳しく解説します。</p>
-      
-      <h2>APIレスポンスの型定義</h2>
-      <p>まず、APIレスポンスの型を定義することから始めましょう。</p>
-      
-      <pre><code>// APIレスポンスの型定義
+# はじめに
+
+TypeScriptを使用することで、APIクライアントの型安全性を確保し、開発時のエラーを減らすことができます。この記事では、型安全なAPIクライアントの構築方法について詳しく解説します。
+
+## APIレスポンスの型定義
+
+まず、APIレスポンスの型を定義することから始めましょう。
+
+\`\`\`typescript
+// APIレスポンスの型定義
 interface User {
   id: number
   name: string
@@ -102,28 +123,31 @@ interface User {
   createdAt: string
 }
 
-interface ApiResponse&lt;T&gt; {
+interface ApiResponse<T> {
   data: T
   message: string
   success: boolean
-}</code></pre>
-      
-      <h2>APIクライアントの実装</h2>
-      <p>型安全なAPIクライアントを実装します。</p>
-      
-      <pre><code>class ApiClient {
+}
+\`\`\`
+
+## APIクライアントの実装
+
+型安全なAPIクライアントを実装します。
+
+\`\`\`typescript
+class ApiClient {
   private baseUrl: string
   
   constructor(baseUrl: string) {
     this.baseUrl = baseUrl
   }
   
-  async get&lt;T&gt;(endpoint: string): Promise&lt;ApiResponse&lt;T&gt;&gt; {
+  async get<T>(endpoint: string): Promise<ApiResponse<T>> {
     const response = await fetch(\`\${this.baseUrl}\${endpoint}\`)
     return response.json()
   }
   
-  async post&lt;T&gt;(endpoint: string, data: any): Promise&lt;ApiResponse&lt;T&gt;&gt; {
+  async post<T>(endpoint: string, data: any): Promise<ApiResponse<T>> {
     const response = await fetch(\`\${this.baseUrl}\${endpoint}\`, {
       method: 'POST',
       headers: {
@@ -133,27 +157,33 @@ interface ApiResponse&lt;T&gt; {
     })
     return response.json()
   }
-}</code></pre>
-      
-      <h2>使用例</h2>
-      <p>実装したAPIクライアントの使用例を紹介します。</p>
-      
-      <pre><code>const apiClient = new ApiClient('https://api.example.com')
+}
+\`\`\`
+
+## 使用例
+
+実装したAPIクライアントの使用例を紹介します。
+
+\`\`\`typescript
+const apiClient = new ApiClient('https://api.example.com')
 
 // 型安全なAPI呼び出し
-const getUser = async (id: number): Promise&lt;User&gt; => {
-  const response = await apiClient.get&lt;User&gt;(\`/users/\${id}\`)
+const getUser = async (id: number): Promise<User> => {
+  const response = await apiClient.get<User>(\`/users/\${id}\`)
   return response.data
 }
 
 // 使用例
 const user = await getUser(1)
-console.log(user.name) // 型安全にアクセス可能</code></pre>
-      
-      <h2>エラーハンドリング</h2>
-      <p>型安全なエラーハンドリングも実装しましょう。</p>
-      
-      <pre><code>class ApiError extends Error {
+console.log(user.name) // 型安全にアクセス可能
+\`\`\`
+
+## エラーハンドリング
+
+型安全なエラーハンドリングも実装しましょう。
+
+\`\`\`typescript
+class ApiError extends Error {
   constructor(
     public status: number,
     public message: string,
@@ -165,7 +195,7 @@ console.log(user.name) // 型安全にアクセス可能</code></pre>
 }
 
 // エラーハンドリング付きのAPIクライアント
-async get&lt;T&gt;(endpoint: string): Promise&lt;ApiResponse&lt;T&gt;&gt; {
+async get<T>(endpoint: string): Promise<ApiResponse<T>> {
   const response = await fetch(\`\${this.baseUrl}\${endpoint}\`)
   
   if (!response.ok) {
@@ -177,10 +207,12 @@ async get&lt;T&gt;(endpoint: string): Promise&lt;ApiResponse&lt;T&gt;&gt; {
   }
   
   return response.json()
-}</code></pre>
-      
-      <h2>まとめ</h2>
-      <p>TypeScriptを使用した型安全なAPIクライアントの構築により、開発時のエラーを減らし、保守性の高いコードを書くことができます。</p>
+}
+\`\`\`
+
+## まとめ
+
+TypeScriptを使用した型安全なAPIクライアントの構築により、開発時のエラーを減らし、保守性の高いコードを書くことができます。
     `,
     date: '2024-01-10',
     category: 'バックエンド',
@@ -274,10 +306,11 @@ export default function BlogPostPage({ params }: Props) {
 
       {/* 記事本文 */}
       <article className="prose prose-lg max-w-none mb-12">
-        <div 
-          dangerouslySetInnerHTML={{ __html: post.content }}
-          className="text-gray-800 leading-relaxed"
-        />
+        <div className="text-gray-800 leading-relaxed">
+          <ReactMarkdown remarkPlugins={[remarkGfm]}>
+            {post.content}
+          </ReactMarkdown>
+        </div>
       </article>
 
       {/* シェアボタン */}
