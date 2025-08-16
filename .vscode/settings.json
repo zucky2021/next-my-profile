@@ -3,6 +3,7 @@
   "editor.renderWhitespace": "boundary",
   "editor.insertSpaces": true,
   "editor.tabSize": 2,
+  "editor.defaultFormatter": "esbenp.prettier-vscode",
   "[markdown]": {
     "editor.defaultFormatter": "DavidAnson.vscode-markdownlint"
   },
