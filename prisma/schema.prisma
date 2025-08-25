@@ -36,3 +36,30 @@ enum EmploymentType {
   TEMPORARY
   INTERN
 }
+
+/// 実績テーブル
+model Achievement {
+  id          Int        @id @default(autoincrement())
+  /// 開始日
+  startDate   DateTime
+  /// 終了日（現職の場合はnull）
+  endDate     DateTime?
+  /// 実績の説明
+  description String
+  createdAt   DateTime   @default(now())
+  updatedAt   DateTime   @updatedAt
+  skills      SkillTag[] @relation("AchievementToSkillTag")
+
+  @@map("achievements")
+}
+
+/// 経歴タグテーブル
+model SkillTag {
+  id           Int           @id @default(autoincrement())
+  name         String        @unique
+  createdAt    DateTime      @default(now())
+  updatedAt    DateTime      @updatedAt
+  achievements Achievement[] @relation("AchievementToSkillTag")
+
+  @@map("skill_tags")
+}
