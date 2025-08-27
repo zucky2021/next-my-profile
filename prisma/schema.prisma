@@ -63,3 +63,15 @@ model SkillTag {
 
   @@map("skill_tags")
 }
+
+/// 資格テーブル
+model Qualification {
+  id         Int      @id @default(autoincrement())
+  name       String   @unique
+  /// 取得年年月
+  acquiredAt DateTime
+  createdAt  DateTime @default(now())
+  updatedAt  DateTime @updatedAt
+
+  @@map("qualifications")
+}

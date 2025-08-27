@@ -3,7 +3,7 @@ import { careerSeedData } from "../dal/career/seed-data";
 import { EmploymentType } from "@prisma/client";
 import { achievementSeedData } from "@/dal/achievement/seed-data";
 import { skillTagSeedData } from "@/dal/skill-tag/seed-data";
-// import { qualificationSeedData } from "../dal/qualification/seed-data";
+import { qualificationSeedData } from "../dal/qualification/seed-data";
 
 async function main() {
   console.log("🌱 データベースのシードを開始します...");
@@ -13,7 +13,7 @@ async function main() {
     await prisma.career.deleteMany();
     await prisma.skillTag.deleteMany();
     await prisma.achievement.deleteMany();
-    // await prisma.qualification.deleteMany();
+    await prisma.qualification.deleteMany();
     console.log("既存データを削除しました");
 
     console.log("経歴データを作成中...");
@@ -45,12 +45,11 @@ async function main() {
     }
     console.log(`✅ ${achievementSeedData.length}件の実績を作成しました`);
 
-    // FIXME:
-    // console.log("資格を作成中...");
-    // for (const data of qualificationSeedData) {
-    //   await prisma.qualification.create({ data });
-    // }
-    // console.log(`✅ ${qualificationSeedData.length}件の資格を作成しました`);
+    console.log("資格データを作成中...");
+    for (const data of qualificationSeedData) {
+      await prisma.qualification.create({ data });
+    }
+    console.log(`✅ ${qualificationSeedData.length}件の資格を作成しました`);
 
     console.log("データベースのシードが完了しました！");
   } catch (error) {
