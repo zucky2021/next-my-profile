@@ -1,4 +1,6 @@
+import { getAchievements } from "@/dal/achievement/getAchievements";
 import { getCareers } from "@/dal/career/getCareers";
+import { SkillTag } from "@prisma/client";
 import { Metadata } from "next";
 
 export const metadata: Metadata = {
@@ -8,6 +10,7 @@ export const metadata: Metadata = {
 
 const CareerPage = async () => {
   const careers = await getCareers();
+  const achievements = await getAchievements();
 
   return (
     <div className="container mx-auto px-4 py-8 max-w-4xl">
@@ -38,7 +41,12 @@ const CareerPage = async () => {
                     : "現在"}
                 </span>
               </div>
-              <a href={career.url} className="text-blue-600 hover:underline" target="_blank" rel="noopener noreferrer">
+              <a
+                href={career.url}
+                className="text-blue-600 hover:underline"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
                 企業情報
               </a>
             </div>
@@ -46,78 +54,38 @@ const CareerPage = async () => {
         </div>
       </section>
 
-      {/* 業務実績セクション */}
       <section className="mb-12">
         <h2 className="text-2xl font-semibold mb-6 text-gray-800 border-b-2 border-gray-200 pb-2">
           主要業務実績
         </h2>
 
         <div className="space-y-6">
-          <div className="bg-white rounded-lg shadow-md p-6">
-            <h3 className="text-lg font-semibold text-gray-900 mb-3">
-              ECサイトのリニューアルプロジェクト
-            </h3>
-            <p className="text-gray-600 mb-2">2023年1月 - 2023年6月</p>
-            <p className="text-gray-700 mb-4">
-              既存のECサイトをNext.jsとTypeScriptを使用して完全リニューアル。
-              パフォーマンスを50%向上させ、ユーザー体験を大幅に改善。
-            </p>
-            <div className="flex flex-wrap gap-2">
-              <span className="bg-blue-100 text-blue-800 text-xs px-2 py-1 rounded">
-                Next.js
-              </span>
-              <span className="bg-blue-100 text-blue-800 text-xs px-2 py-1 rounded">
-                TypeScript
-              </span>
-              <span className="bg-blue-100 text-blue-800 text-xs px-2 py-1 rounded">
-                Tailwind CSS
-              </span>
+          {achievements.map((achievement) => (
+            <div
+              key={achievement.id}
+              className="bg-white rounded-lg shadow-md p-6 border-l-4 border-green-500"
+            >
+              <p className="text-gray-600 mb-2 rounded-full">
+                {achievement.startDate.toLocaleDateString()} -{" "}
+                {achievement.endDate
+                  ? achievement.endDate.toLocaleDateString()
+                  : "現在"}
+              </p>
+              <p className="text-gray-700 mb-4">{achievement.description}</p>
+              {achievement.skills && (
+                <div className="flex flex-wrap gap-2">
+                  {achievement.skills.map((skillTag: SkillTag) => (
+                    <span
+                      key={skillTag.id}
+                      className="bg-green-100 text-green-800 text-xs px-2 py-1 rounded"
+                    >
+                      {skillTag.name}
+                    </span>
+                  ))}
+                </div>
+              )}
             </div>
-          </div>
-
-          <div className="bg-white rounded-lg shadow-md p-6">
-            <h3 className="text-lg font-semibold text-gray-900 mb-3">
-              社内管理システムの構築
-            </h3>
-            <p className="text-gray-600 mb-2">2022年7月 - 2022年12月</p>
-            <p className="text-gray-700 mb-4">
-              従業員100名規模の企業向け管理システムを設計・開発。
-              認証機能、権限管理、データ分析機能を実装。
-            </p>
-            <div className="flex flex-wrap gap-2">
-              <span className="bg-green-100 text-green-800 text-xs px-2 py-1 rounded">
-                React
-              </span>
-              <span className="bg-green-100 text-green-800 text-xs px-2 py-1 rounded">
-                Node.js
-              </span>
-              <span className="bg-green-100 text-green-800 text-xs px-2 py-1 rounded">
-                PostgreSQL
-              </span>
-            </div>
-          </div>
-
-          <div className="bg-white rounded-lg shadow-md p-6">
-            <h3 className="text-lg font-semibold text-gray-900 mb-3">
-              モバイルアプリの開発
-            </h3>
-            <p className="text-gray-600 mb-2">2021年4月 - 2021年9月</p>
-            <p className="text-gray-700 mb-4">
-              React Nativeを使用したモバイルアプリを開発。
-              iOS・Android両プラットフォームに対応し、10万ダウンロードを達成。
-            </p>
-            <div className="flex flex-wrap gap-2">
-              <span className="bg-purple-100 text-purple-800 text-xs px-2 py-1 rounded">
-                React Native
-              </span>
-              <span className="bg-purple-100 text-purple-800 text-xs px-2 py-1 rounded">
-                Firebase
-              </span>
-              <span className="bg-purple-100 text-purple-800 text-xs px-2 py-1 rounded">
-                Redux
-              </span>
-            </div>
-          </div>
+          ))}
         </div>
       </section>
 
