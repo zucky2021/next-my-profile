@@ -1,12 +1,24 @@
 export const skillTagSeedData = [
   {
+    name: "HTML",
+  },
+  {
+    name: "CSS",
+  },
+  {
+    name: "Sass",
+  },
+  {
     name: "PHP",
   },
   {
-    name: "JavaScript",
+    name: "Laravel",
   },
   {
-    name: "Laravel",
+    name: "Python",
+  },
+  {
+    name: "JavaScript",
   },
   {
     name: "TypeScript",

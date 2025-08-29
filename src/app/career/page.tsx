@@ -2,6 +2,7 @@ import { getAchievements } from "@/dal/achievement/getAchievements";
 import { getCareers } from "@/dal/career/getCareers";
 import { SkillTag } from "@prisma/client";
 import { Metadata } from "next";
+import React from "react";
 
 export const metadata: Metadata = {
   title: "経歴 | My Profile",
@@ -71,7 +72,14 @@ const CareerPage = async () => {
                   ? achievement.endDate.toLocaleDateString()
                   : "現在"}
               </p>
-              <p className="text-gray-700 mb-4">{achievement.description}</p>
+              <p className="text-gray-700 mb-4">
+                {achievement.description.split("\n").map((line, i) => (
+                  <React.Fragment key={i}>
+                    {line}
+                    <br />
+                  </React.Fragment>
+                ))}
+                </p>
               {achievement.skills && (
                 <div className="flex flex-wrap gap-2">
                   {achievement.skills.map((skillTag: SkillTag) => (
