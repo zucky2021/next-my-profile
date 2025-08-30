@@ -2,6 +2,14 @@
   "recommendations": [
     "streetsidesoftware.code-spell-checker",
     "eamodio.gitlens",
-    "github.vscode-pull-request-github"
+    "github.vscode-pull-request-github",
+    "alefragnani.bookmarks",
+    "dbaeumer.vscode-eslint",
+    "davidanson.vscode-markdownlint",
+    "christian-kohler.npm-intellisense",
+    "esbenp.prettier-vscode",
+    "bradlc.vscode-tailwindcss",
+    "jgclark.vscode-todo-highlight",
+    "gruntfuggly.todo-tree"
   ]
 }
