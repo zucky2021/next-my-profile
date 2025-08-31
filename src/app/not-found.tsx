@@ -40,12 +40,6 @@ export default function NotFound() {
               経歴ページ
             </Link>
             <Link
-              href="/blog"
-              className="text-blue-600 hover:text-blue-800 transition-colors"
-            >
-              ブログページ
-            </Link>
-            <Link
               href="/hobbies"
               className="text-blue-600 hover:text-blue-800 transition-colors"
             >
