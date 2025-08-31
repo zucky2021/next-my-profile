@@ -11,6 +11,7 @@
     "bradlc.vscode-tailwindcss",
     "jgclark.vscode-todo-highlight",
     "gruntfuggly.todo-tree",
-    "prisma.prisma"
+    "prisma.prisma",
+    "coderabbit.coderabbit-vscode"
   ]
 }
