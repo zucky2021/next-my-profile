@@ -10,8 +10,9 @@
 ### Commit
 
 - *Git Hook - pre-commit*でソースコードの品質を担保
-- 整形
-- 静的解析
+  - [husky](https://www.npmjs.com/package/husky)で下記を実装
+    - 整形
+    - 静的解析
 
 ### Push
 
