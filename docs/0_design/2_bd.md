@@ -12,9 +12,9 @@
   - 職務要約
   - 転職歴
   - 業務実績
-- PRページ
+- 自己PRページ
 
 ## 技術スタック
 
-- フレームワーク: Next.js
-- DB: Supabase
+- フレームワーク: [Next.js](https://nextjsjp.org/)
+- DB: [supabase](https://supabase.com/)

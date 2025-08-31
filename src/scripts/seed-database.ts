@@ -10,10 +10,12 @@ async function main() {
 
   try {
     console.log("既存データを削除中...");
-    await prisma.career.deleteMany();
-    await prisma.skillTag.deleteMany();
-    await prisma.achievement.deleteMany();
-    await prisma.qualification.deleteMany();
+    await prisma.$transaction([
+      prisma.achievement.deleteMany(),
+      prisma.skillTag.deleteMany(),
+      prisma.qualification.deleteMany(),
+      prisma.career.deleteMany(),
+    ])
     console.log("既存データを削除しました");
 
     console.log("経歴データを作成中...");

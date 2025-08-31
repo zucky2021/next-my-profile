@@ -4,8 +4,43 @@
 
 ## DBテーブル設計
 
-各テーブルのカラム、型、制約、リレーションを記載。
-例: career, achievement, qualification などのテーブル定義。
+```mermaid
+erDiagram
+  Career {
+    Int id PK
+    String company
+    String url
+    EmploymentType employmentType
+    DateTime startDate
+    DateTime endDate
+    String description
+    DateTime createdAt
+    DateTime updatedAt
+  }
+  Achievement {
+    Int id PK
+    DateTime startDate
+    DateTime endDate
+    String description
+    DateTime createdAt
+    DateTime updatedAt
+  }
+  SkillTag {
+    Int id PK
+    String name
+    DateTime createdAt
+    DateTime updatedAt
+  }
+  Qualification {
+    Int id PK
+    String name
+    DateTime acquiredAt
+    DateTime createdAt
+    DateTime updatedAt
+  }
+
+  Achievement ||--|| SkillTag : "skills"
+```
 
 ## API仕様
 

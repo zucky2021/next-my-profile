@@ -27,6 +27,7 @@ model Career {
   updatedAt      DateTime       @updatedAt
 
   @@map("careers")
+  @@index([startDate])
 }
 
 enum EmploymentType {
