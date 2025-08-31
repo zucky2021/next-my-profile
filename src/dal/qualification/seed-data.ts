@@ -21,7 +21,7 @@ export const qualificationSeedData = [
   },
   {
     name: "自主保全技士2級",
-    acquiredAt: new Date("2017-12:01"),
+    acquiredAt: new Date("2017-12-01"),
   },
   {
     name: "普通自動二輪車免許",
