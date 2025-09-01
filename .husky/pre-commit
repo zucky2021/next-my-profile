@@ -1,6 +1,3 @@
-#!/bin/sh
-. "$(dirname "$0")/_/husky.sh"
-
 if [ -z "$(git diff --cached --name-only)" ]; then
   echo "No staged files. Skipping pre-commit hook."
   exit 0
