@@ -122,8 +122,8 @@ alwaysApply: true
 
 ## 設計
 
-設計書はこちらの[docs/design](../../docs/design/0_index.md)に記載していますので、  
-常にこちらを念頭に置いてください
+- 常にこちらの設計書を念頭に置いてください
+  - [設計書](../../docs/0_design/0_index.md)
 
 ---
 
