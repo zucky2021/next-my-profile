@@ -20,3 +20,7 @@
 
 - フレームワーク: [Next.js](https://nextjsjp.org/)
 - DB: [supabase](https://supabase.com/)
+
+## クラウドプラットフォーム
+
+- [Vercel](https://vercel.com/home)
