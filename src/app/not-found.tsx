@@ -1,10 +1,10 @@
-import Link from 'next/link'
-import { Metadata } from 'next'
+import Link from "next/link";
+import { Metadata } from "next";
 
 export const metadata: Metadata = {
-  title: 'ページが見つかりません | My Profile',
-  description: 'お探しのページが見つかりませんでした',
-}
+  title: "ページが見つかりません | My Profile",
+  description: "お探しのページが見つかりませんでした",
+};
 
 export default function NotFound() {
   return (
@@ -27,17 +27,23 @@ export default function NotFound() {
           >
             ホームに戻る
           </Link>
-          
+
           <div className="text-sm text-gray-500">
             または、以下のページをご確認ください：
           </div>
-          
+
           <div className="flex flex-col space-y-2">
             <Link
               href="/career"
               className="text-blue-600 hover:text-blue-800 transition-colors"
             >
               経歴ページ
+            </Link>
+            <Link
+              href="/self-pr"
+              className="text-blue-600 hover:text-blue-800 transition-colors"
+            >
+              自己PRページ
             </Link>
             <Link
               href="/hobbies"
@@ -49,5 +55,5 @@ export default function NotFound() {
         </div>
       </div>
     </div>
-  )
-} 
+  );
+}
