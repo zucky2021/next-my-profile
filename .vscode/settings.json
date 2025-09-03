@@ -8,5 +8,6 @@
     "editor.defaultFormatter": "DavidAnson.vscode-markdownlint"
   },
   "editor.formatOnPaste": true,
-  "editor.formatOnSave": true
+  "editor.formatOnSave": true,
+  "cSpell.words": ["Apidog", "Supabase"]
 }

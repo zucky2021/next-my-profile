@@ -1,22 +1,23 @@
 "use client";
 
-import Link from 'next/link';
-import { usePathname } from 'next/navigation';
-import { useState } from 'react';
+import Link from "next/link";
+import { usePathname } from "next/navigation";
+import { useState } from "react";
 
 export default function Navigation() {
   const pathname = usePathname();
   const [isMenuOpen, setIsMenuOpen] = useState(false);
 
   const navigation = [
-    { name: 'ホーム', href: '/' },
-    { name: '経歴', href: '/career' },
-    { name: '趣味', href: '/hobbies' },
+    { name: "ホーム", href: "/" },
+    { name: "経歴", href: "/career" },
+    { name: "趣味", href: "/hobbies" },
+    { name: "自己PR", href: "/self-pr" },
   ];
 
   const isActive = (href: string) => {
-    if (href === '/') {
-      return pathname === '/';
+    if (href === "/") {
+      return pathname === "/";
     }
     return pathname.startsWith(href);
   };
@@ -28,7 +29,9 @@ export default function Navigation() {
           {/* ロゴ */}
           <div className="flex items-center">
             <Link href="/" className="flex items-center">
-              <span className="text-xl font-bold text-gray-900">My Profile</span>
+              <span className="text-xl font-bold text-gray-900">
+                My Profile
+              </span>
             </Link>
           </div>
 
@@ -40,8 +43,8 @@ export default function Navigation() {
                 href={item.href}
                 className={`px-3 py-2 rounded-md text-sm font-medium transition-colors ${
                   isActive(item.href)
-                    ? 'text-blue-600 bg-blue-50'
-                    : 'text-gray-700 hover:text-blue-600 hover:bg-gray-50'
+                    ? "text-blue-600 bg-blue-50"
+                    : "text-gray-700 hover:text-blue-600 hover:bg-gray-50"
                 }`}
               >
                 {item.name}
@@ -53,7 +56,7 @@ export default function Navigation() {
           <div className="md:hidden flex items-center">
             <button
               onClick={() => setIsMenuOpen(!isMenuOpen)}
-              aria-label={isMenuOpen ? 'メニューを閉じる' : 'メニューを開く'}
+              aria-label={isMenuOpen ? "メニューを閉じる" : "メニューを開く"}
               aria-expanded={isMenuOpen}
               className="inline-flex items-center justify-center p-2 rounded-md text-gray-700 hover:text-blue-600 hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-blue-500"
             >
@@ -103,8 +106,8 @@ export default function Navigation() {
                 href={item.href}
                 className={`block px-3 py-2 rounded-md text-base font-medium transition-colors ${
                   isActive(item.href)
-                    ? 'text-blue-600 bg-blue-50'
-                    : 'text-gray-700 hover:text-blue-600 hover:bg-gray-50'
+                    ? "text-blue-600 bg-blue-50"
+                    : "text-gray-700 hover:text-blue-600 hover:bg-gray-50"
                 }`}
                 onClick={() => setIsMenuOpen(false)}
               >
@@ -116,4 +119,4 @@ export default function Navigation() {
       )}
     </nav>
   );
-} 
+}
