@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import { useCallback, useEffect, useState } from "react";
 
 interface Repository {
   id: number;
@@ -26,43 +26,47 @@ export function PortfolioSection() {
     error: null,
   });
 
-  const apiBaseUrl = process.env.NEXT_PUBLIC_GITHUB_API_BASE;
-  const username = process.env.NEXT_PUBLIC_GITHUB_USERNAME;
+  const apiBaseUrl = process.env.NEXT_PUBLIC_GITHUB_API_BASE ?? "";
+  const username = process.env.NEXT_PUBLIC_GITHUB_USERNAME ?? "";
   const sort = "updated";
   const direction = "desc";
   /** 1ページあたりの取得件数(max: 100) */
   const perPage = 20;
 
-  useEffect(() => {
-    const fetchPortfolioData = async () => {
-      try {
-        setPortfolioData((prev) => ({ ...prev, loading: true, error: null }));
+  const fetchPortfolioData = useCallback(async () => {
+    try {
+      setPortfolioData((prev) => ({ ...prev, loading: true, error: null }));
 
-        const response = await fetch(
-          `${apiBaseUrl}/users/${username}/repos?sort=${sort}&direction=${direction}&per_page=${perPage}`,
-        );
-        if (!response.ok) {
-          throw new Error(`Failed to fetch: ${response.status}`);
-        }
-        const data = await response.json();
-
-        setPortfolioData({
-          repositories: data,
-          loading: false,
-          error: null,
-        });
-      } catch (e) {
-        console.error(e);
-        setPortfolioData({
-          repositories: [],
-          loading: false,
-          error: "ポートフォリオの取得に失敗しました",
-        });
+      if (!apiBaseUrl || !username) {
+        throw new Error("GITHUB_API_BASE or GITHUB_USERNAME is not set");
       }
-    };
 
-    fetchPortfolioData();
+      const response = await fetch(
+        `${apiBaseUrl}/users/${username}/repos?sort=${sort}&direction=${direction}&per_page=${perPage}`,
+      );
+      if (!response.ok) {
+        throw new Error(`Failed to fetch: ${response.status}`);
+      }
+      const data = await response.json();
+
+      setPortfolioData({
+        repositories: data,
+        loading: false,
+        error: null,
+      });
+    } catch (e) {
+      console.error(e);
+      setPortfolioData({
+        repositories: [],
+        loading: false,
+        error: "ポートフォリオの取得に失敗しました",
+      });
+    }
   }, [apiBaseUrl, username, sort, direction, perPage]);
+
+  useEffect(() => {
+    fetchPortfolioData();
+  }, [fetchPortfolioData]);
 
   const formatDate = (dateString: string) => {
     return new Date(dateString).toLocaleDateString("ja-JP", {
@@ -100,7 +104,7 @@ export function PortfolioSection() {
         <div className="text-center py-8">
           <p className="text-red-600 mb-4">{portfolioData.error}</p>
           <button
-            onClick={() => window.location.reload()}
+            onClick={fetchPortfolioData}
             className="px-4 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition-colors"
           >
             再試行

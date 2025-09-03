@@ -11,7 +11,7 @@ export default function Navigation() {
   const navigation = [
     { name: "ホーム", href: "/" },
     { name: "経歴", href: "/career" },
-    // { name: "趣味", href: "/hobbies" },
+    { name: "趣味", href: "/hobbies" },
     { name: "自己PR", href: "/self-pr" },
   ];
 

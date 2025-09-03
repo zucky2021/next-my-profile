@@ -1,10 +1,16 @@
-// FIXME:こちらのページはプロフィールに含める
-
 import { Metadata } from "next";
 
 export const metadata: Metadata = {
   title: "趣味 | My Profile",
   description: "私の趣味や興味のあること",
+  openGraph: {
+    title: "趣味 | My Profile",
+    description: "私の趣味や興味のあること",
+    type: "website",
+  },
+  alternates: {
+    canonical: "/hobbies",
+  },
 };
 
 // 趣味の型定義
@@ -100,7 +106,7 @@ const hobbies: Hobby[] = [
     description:
       "様々なジャンルの音楽を聴くことが好きで、時には楽器演奏も楽しみます。",
     icon: "🎵",
-    category: "エンターテイメント",
+    category: "エンターテインメント",
     details: [
       "ロック、ポップス、ジャズ",
       "クラシック音楽",
@@ -131,7 +137,9 @@ export default function HobbiesPage() {
             <div className="p-6">
               {/* アイコンとタイトル */}
               <div className="flex items-center mb-4">
-                <span className="text-3xl mr-3">{hobby.icon}</span>
+                <span className="text-3xl mr-3" aria-hidden="true">
+                  {hobby.icon}
+                </span>
                 <div>
                   <h2 className="text-xl font-semibold text-gray-900">
                     {hobby.title}

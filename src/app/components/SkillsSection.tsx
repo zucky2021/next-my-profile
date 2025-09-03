@@ -16,12 +16,12 @@ export function SkillsSection() {
     {
       category: "バックエンド",
       skills: [
-        { name: "GO", level: 80 },
+        { name: "Go", level: 80 },
         { name: "Gin", level: 80 },
         { name: "Laravel", level: 75 },
         { name: "PHP", level: 80 },
         { name: "MySQL", level: 75 },
-        { name: "Ruby onRails", level: 80 },
+        { name: "Ruby on Rails", level: 80 },
         { name: "Prisma", level: 80 },
         { name: "PostgreSQL", level: 75 },
         { name: "Supabase", level: 80 },
