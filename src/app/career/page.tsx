@@ -79,7 +79,7 @@ const CareerPage = async () => {
                     <br />
                   </React.Fragment>
                 ))}
-                </p>
+              </p>
               {achievement.skills && (
                 <div className="flex flex-wrap gap-2">
                   {achievement.skills.map((skillTag: SkillTag) => (

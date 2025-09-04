@@ -38,5 +38,5 @@ export const qualificationSeedData = [
   {
     name: "基本情報技術者試験",
     acquiredAt: new Date("2023-08-01"),
-  }
+  },
 ];
