@@ -26,16 +26,8 @@ model Career {
   createdAt      DateTime       @default(now())
   updatedAt      DateTime       @updatedAt
 
-  @@map("careers")
   @@index([startDate])
-}
-
-enum EmploymentType {
-  FULL_TIME
-  PART_TIME
-  CONTRACT
-  TEMPORARY
-  INTERN
+  @@map("careers")
 }
 
 /// 実績テーブル
@@ -75,4 +67,12 @@ model Qualification {
   updatedAt  DateTime @updatedAt
 
   @@map("qualifications")
+}
+
+enum EmploymentType {
+  FULL_TIME
+  PART_TIME
+  CONTRACT
+  TEMPORARY
+  INTERN
 }
