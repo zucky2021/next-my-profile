@@ -6,13 +6,31 @@ const globalForPrisma = globalThis as unknown as {
 
 let prisma: PrismaClient;
 
-if (process.env.NODE_ENV === "production") {
-  prisma = new PrismaClient();
+// ビルド時はPrismaクライアントの初期化を完全にスキップ
+if (
+  process.env.NODE_ENV === "production" &&
+  process.env.NEXT_PHASE === "phase-production-build"
+) {
+  // 本番ビルド時のみダミークライアントを返す
+  prisma = {} as PrismaClient;
 } else {
-  if (!globalForPrisma.prisma) {
-    globalForPrisma.prisma = new PrismaClient();
+  // 開発環境と本番実行時はPrismaクライアントを初期化
+  try {
+    if (!globalForPrisma.prisma) {
+      globalForPrisma.prisma = new PrismaClient({
+        log:
+          process.env.NODE_ENV === "development"
+            ? ["query", "error", "warn"]
+            : ["error"],
+      });
+    }
+    prisma = globalForPrisma.prisma;
+  } catch (error) {
+    console.error("Failed to initialize Prisma client:", error);
+    // フォールバック用のダミークライアント
+    prisma = {} as PrismaClient;
   }
-  prisma = globalForPrisma.prisma;
 }
 
+export { prisma };
 export default prisma;
