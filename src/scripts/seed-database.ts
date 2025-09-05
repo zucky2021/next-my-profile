@@ -1,4 +1,4 @@
-import { prisma } from "../lib/prisma";
+import prisma from "../lib/prisma";
 import { careerSeedData } from "../dal/career/seed-data";
 import { EmploymentType } from "@prisma/client";
 import { achievementSeedData } from "@/dal/achievement/seed-data";
