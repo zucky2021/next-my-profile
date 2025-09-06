@@ -29,7 +29,7 @@ const CareerPage = async () => {
         </h2>
 
         <div className="space-y-8">
-          {careers.map((career) => (
+          {careers?.map((career) => (
             <div
               key={career.id}
               className="bg-white rounded-lg shadow-md p-6 border-l-4 border-blue-500"
@@ -67,7 +67,7 @@ const CareerPage = async () => {
         </h2>
 
         <div className="space-y-6">
-          {achievements.map((achievement) => (
+          {achievements?.map((achievement) => (
             <div
               key={achievement.id}
               className="bg-white rounded-lg shadow-md p-6 border-l-4 border-green-500"
