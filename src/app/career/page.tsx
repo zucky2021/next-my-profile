@@ -13,6 +13,12 @@ const CareerPage = async () => {
   const careers = await getCareers();
   const achievements = await getAchievements();
 
+  // FIXME: ログ出力
+  console.log("env: ", process.env.DATABASE_URL);
+  console.log("env: ", process.env.DIRECT_URL);
+  console.log(careers);
+  console.log(achievements);
+
   return (
     <div className="container mx-auto px-4 py-8 max-w-4xl">
       <h1 className="text-4xl font-bold mb-8 text-center">経歴</h1>
