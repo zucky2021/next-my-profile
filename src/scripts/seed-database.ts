@@ -10,7 +10,7 @@ async function main() {
 
   try {
     console.log("既存データを削除中...");
-    await prisma.$transaction([
+    await prisma?.$transaction([
       prisma.achievement.deleteMany(),
       prisma.skillTag.deleteMany(),
       prisma.qualification.deleteMany(),
@@ -20,7 +20,7 @@ async function main() {
 
     console.log("経歴データを作成中...");
     for (const data of careerSeedData) {
-      await prisma.career.create({
+      await prisma?.career.create({
         data: {
           ...data,
           employmentType: data.employmentType as EmploymentType,
@@ -31,12 +31,12 @@ async function main() {
 
     console.log("スキルタグデータを作成中...");
     for (const data of skillTagSeedData) {
-      await prisma.skillTag.create({ data });
+      await prisma?.skillTag.create({ data });
     }
 
     console.log("実績データを作成中...");
     for (const data of achievementSeedData) {
-      await prisma.achievement.create({
+      await prisma?.achievement.create({
         data: {
           ...data,
           skills: {
@@ -49,7 +49,7 @@ async function main() {
 
     console.log("資格データを作成中...");
     for (const data of qualificationSeedData) {
-      await prisma.qualification.create({ data });
+      await prisma?.qualification.create({ data });
     }
     console.log(`✅ ${qualificationSeedData.length}件の資格を作成しました`);
 
@@ -58,7 +58,7 @@ async function main() {
     console.error("❌ シード中にエラーが発生しました:", error);
     throw error;
   } finally {
-    await prisma.$disconnect();
+    await prisma?.$disconnect();
   }
 }
 
