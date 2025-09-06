@@ -1,6 +1,5 @@
 generator client {
-  provider        = "prisma-client-js"
-  previewFeatures = ["queryCompiler", "driverAdapters"]
+  provider = "prisma-client-js"
 }
 
 datasource db {
@@ -11,7 +10,7 @@ datasource db {
 
 /// 経歴テーブル
 model Career {
-  id             Int            @id @default(autoincrement())
+  id             String            @default(cuid()) @id
   /// 会社名
   company        String
   /// ホームページURL
@@ -33,7 +32,7 @@ model Career {
 
 /// 実績テーブル
 model Achievement {
-  id          Int        @id @default(autoincrement())
+  id             String            @default(cuid()) @id
   /// 開始日
   startDate   DateTime
   /// 終了日（現職の場合はnull）
@@ -49,7 +48,7 @@ model Achievement {
 
 /// 経歴タグテーブル
 model SkillTag {
-  id           Int           @id @default(autoincrement())
+  id             String            @default(cuid()) @id
   name         String        @unique
   createdAt    DateTime      @default(now())
   updatedAt    DateTime      @updatedAt
@@ -60,7 +59,7 @@ model SkillTag {
 
 /// 資格テーブル
 model Qualification {
-  id         Int      @id @default(autoincrement())
+  id             String            @default(cuid()) @id
   name       String   @unique
   /// 取得年年月
   acquiredAt DateTime
