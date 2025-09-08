@@ -1,5 +1,5 @@
 import Image from "next/image";
-import SnsShareButtons from "./components/SnsShareButtons";
+import SnsBtn from "./components/SnsBtn";
 import Link from "next/link";
 
 export default function Home() {
@@ -44,7 +44,7 @@ export default function Home() {
 
             {/* SNSシェアボタン */}
             <div className="border-t border-gray-200 pt-6">
-              <SnsShareButtons />
+              <SnsBtn />
             </div>
           </div>
 

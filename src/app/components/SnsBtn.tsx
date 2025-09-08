@@ -3,10 +3,10 @@
 import Link from "next/link";
 import { useState } from "react";
 
-const SnsShareButtons = () => {
+const SnsBtn = () => {
   const [copiedUrl, setCopiedUrl] = useState(false);
 
-  const twitterUrl = "https://x.com/kanbaru2024";
+  const xUrl = "https://x.com/kanbaru2024";
 
   const instagramUrl = "https://www.instagram.com/zucky_2025/";
 
@@ -26,11 +26,11 @@ const SnsShareButtons = () => {
   return (
     <div className="flex items-center gap-4">
       <Link
-        href={twitterUrl}
+        href={xUrl}
         target="_blank"
         rel="noopener noreferrer"
         className="flex items-center gap-2 rounded-lg bg-black px-4 py-2 text-white transition-colors duration-200 hover:bg-gray-800"
-        aria-label="Xでシェア"
+        aria-label="Xで開く"
       >
         <svg
           className="h-4 w-4"
@@ -43,7 +43,6 @@ const SnsShareButtons = () => {
         <span className="text-sm">X</span>
       </Link>
 
-      {/* Instagram シェアボタン */}
       <Link
         href={instagramUrl}
         target="_blank"
@@ -66,8 +65,8 @@ const SnsShareButtons = () => {
         <span className="text-sm">Instagram</span>
       </Link>
 
-      {/* URLコピーボタン */}
       <button
+        type="button"
         onClick={copyToClipboard}
         className="flex items-center gap-2 rounded-lg bg-gray-200 px-4 py-2 text-gray-700 transition-colors duration-200 hover:bg-gray-300"
         aria-label="URLをコピー"
@@ -94,4 +93,4 @@ const SnsShareButtons = () => {
   );
 };
 
-export default SnsShareButtons;
+export default SnsBtn;
