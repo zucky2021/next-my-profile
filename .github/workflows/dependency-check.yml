@@ -6,7 +6,12 @@ on:
     - cron: "0 1 * * 1"
   pull_request:
     branches: [main]
+    types: [opened, reopened, synchronize]
   workflow_dispatch: # 手動実行を許可
+
+permissions:
+  contents: read
+  pull-requests: write
 
 jobs:
   check-dependencies:
@@ -39,7 +44,6 @@ jobs:
             echo "⚠️ Found outdated dependencies:"
             npm outdated || true
             echo "has_outdated=true" >> $GITHUB_OUTPUT
-            
             # JSONファイルから詳細情報を抽出
             if [ -f outdated.json ]; then
               echo "📋 Detailed outdated information:"
@@ -47,7 +51,7 @@ jobs:
             fi
           fi
 
-      - name: Fail if critical dependencies are outdated
+      - name: Fail if outdated dependencies exist
         if: steps.outdated-check.outputs.has_outdated == 'true'
         run: |
           echo "❌ Outdated dependencies detected!"
