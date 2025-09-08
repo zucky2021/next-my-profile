@@ -16,9 +16,14 @@
 
 ### Push
 
+- Coming soon...
+
 ### Pull Request
 
 - [GitHub](https://github.com/zucky2021/next-my-profile/pulls)にてPRを作成
+- PR作成時に古い依存関係の確認が実行
+  - [dependency-check](../../../.github/workflows/dependency-check.yml)
+  - 失敗した際には`npm-check-updates`を使用(詳細はCIのメッセージより)
 
 ### Source Review
 
