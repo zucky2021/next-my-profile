@@ -10,7 +10,9 @@ const SnsShareButtons = () => {
 
   const instagramUrl = "https://www.instagram.com/zucky_2025/";
 
-  // URLをクリップボードにコピー
+  /**
+   * URLをクリップボードにコピー
+   */
   const copyToClipboard = async () => {
     try {
       await navigator.clipboard.writeText(window.location.href);
@@ -27,11 +29,11 @@ const SnsShareButtons = () => {
         href={twitterUrl}
         target="_blank"
         rel="noopener noreferrer"
-        className="flex items-center gap-2 px-4 py-2 bg-black text-white rounded-lg hover:bg-gray-800 transition-colors duration-200"
+        className="flex items-center gap-2 rounded-lg bg-black px-4 py-2 text-white transition-colors duration-200 hover:bg-gray-800"
         aria-label="Xでシェア"
       >
         <svg
-          className="w-4 h-4"
+          className="h-4 w-4"
           fill="currentColor"
           viewBox="0 0 24 24"
           aria-hidden="true"
@@ -46,11 +48,11 @@ const SnsShareButtons = () => {
         href={instagramUrl}
         target="_blank"
         rel="noopener noreferrer"
-        className="flex items-center gap-2 px-4 py-2 bg-gradient-to-r from-purple-500 to-pink-500 text-white rounded-lg hover:from-purple-600 hover:to-pink-600 transition-all duration-200"
+        className="flex items-center gap-2 rounded-lg bg-gradient-to-r from-purple-500 to-pink-500 px-4 py-2 text-white transition-all duration-200 hover:from-purple-600 hover:to-pink-600"
         aria-label="Instagramで開く"
       >
         <svg
-          className="w-4 h-4"
+          className="h-4 w-4"
           fill="currentColor"
           viewBox="0 0 24 24"
           aria-hidden="true"
@@ -67,11 +69,11 @@ const SnsShareButtons = () => {
       {/* URLコピーボタン */}
       <button
         onClick={copyToClipboard}
-        className="flex items-center gap-2 px-4 py-2 bg-gray-200 text-gray-700 rounded-lg hover:bg-gray-300 transition-colors duration-200"
+        className="flex items-center gap-2 rounded-lg bg-gray-200 px-4 py-2 text-gray-700 transition-colors duration-200 hover:bg-gray-300"
         aria-label="URLをコピー"
       >
         <svg
-          className="w-4 h-4"
+          className="h-4 w-4"
           fill="none"
           stroke="currentColor"
           viewBox="0 0 24 24"

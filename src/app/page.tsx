@@ -7,9 +7,9 @@ export default function Home() {
     <div className="min-h-screen bg-gradient-to-br from-blue-50 to-indigo-100">
       <div className="container mx-auto px-4 py-8">
         {/* プロフィール画像とメインコンテンツ */}
-        <div className="max-w-4xl mx-auto">
+        <div className="mx-auto max-w-4xl">
           {/* プロフィール画像セクション */}
-          <div className="text-center mb-8">
+          <div className="mb-8 text-center">
             <div className="relative inline-block">
               <Image
                 src="/main.jpg"
@@ -17,7 +17,7 @@ export default function Home() {
                 width={400}
                 height={400}
                 priority
-                className="rounded-full shadow-xl border-4 border-white object-cover"
+                className="rounded-full border-4 border-white object-cover shadow-xl"
                 style={{
                   aspectRatio: "1/1",
                 }}
@@ -26,16 +26,16 @@ export default function Home() {
           </div>
 
           {/* 名前とタイトル */}
-          <div className="text-center mb-8">
-            <h1 className="text-4xl font-bold text-gray-900 mb-2">鈴木 宏尭</h1>
-            <p className="text-xl text-gray-600 mb-4">フルスタックエンジニア</p>
-            <div className="w-24 h-1 bg-blue-600 mx-auto rounded-full"></div>
+          <div className="mb-8 text-center">
+            <h1 className="mb-2 text-4xl font-bold text-gray-900">鈴木 宏尭</h1>
+            <p className="mb-4 text-xl text-gray-600">フルスタックエンジニア</p>
+            <div className="mx-auto h-1 w-24 rounded-full bg-blue-600"></div>
           </div>
 
           {/* 自己紹介 */}
-          <div className="bg-white rounded-xl shadow-lg p-8 mb-8">
-            <h2 className="text-2xl font-bold text-gray-900 mb-4">はじめに</h2>
-            <p className="text-gray-700 leading-relaxed mb-6">
+          <div className="mb-8 rounded-xl bg-white p-8 shadow-lg">
+            <h2 className="mb-4 text-2xl font-bold text-gray-900">はじめに</h2>
+            <p className="mb-6 leading-relaxed text-gray-700">
               ご覧いただきありがとうございます。私はフルスタックエンジニアとして、
               フロントエンドからバックエンドまで幅広い技術領域で開発を行っています。
               特にNext.js、React、Go、Laravelを用いたWebアプリケーション開発を得意としており、
@@ -49,15 +49,15 @@ export default function Home() {
           </div>
 
           {/* ナビゲーションカード */}
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+          <div className="grid grid-cols-1 gap-6 md:grid-cols-3">
             <Link
               href="/career"
-              className="bg-white rounded-xl shadow-lg p-6 hover:shadow-xl transition-shadow duration-300 group"
+              className="group rounded-xl bg-white p-6 shadow-lg transition-shadow duration-300 hover:shadow-xl"
             >
-              <div className="flex items-center mb-4">
-                <div className="w-12 h-12 bg-blue-100 rounded-lg flex items-center justify-center group-hover:bg-blue-200 transition-colors">
+              <div className="mb-4 flex items-center">
+                <div className="flex h-12 w-12 items-center justify-center rounded-lg bg-blue-100 transition-colors group-hover:bg-blue-200">
                   <svg
-                    className="w-6 h-6 text-blue-600"
+                    className="h-6 w-6 text-blue-600"
                     fill="none"
                     stroke="currentColor"
                     viewBox="0 0 24 24"
@@ -71,20 +71,20 @@ export default function Home() {
                   </svg>
                 </div>
               </div>
-              <h3 className="text-lg font-semibold text-gray-900 mb-2">経歴</h3>
-              <p className="text-gray-600 text-sm">
+              <h3 className="mb-2 text-lg font-semibold text-gray-900">経歴</h3>
+              <p className="text-sm text-gray-600">
                 これまでの職歴と実績をご覧いただけます
               </p>
             </Link>
 
             <Link
               href="/hobbies"
-              className="bg-white rounded-xl shadow-lg p-6 hover:shadow-xl transition-shadow duration-300 group"
+              className="group rounded-xl bg-white p-6 shadow-lg transition-shadow duration-300 hover:shadow-xl"
             >
-              <div className="flex items-center mb-4">
-                <div className="w-12 h-12 bg-green-100 rounded-lg flex items-center justify-center group-hover:bg-green-200 transition-colors">
+              <div className="mb-4 flex items-center">
+                <div className="flex h-12 w-12 items-center justify-center rounded-lg bg-green-100 transition-colors group-hover:bg-green-200">
                   <svg
-                    className="w-6 h-6 text-green-600"
+                    className="h-6 w-6 text-green-600"
                     fill="none"
                     stroke="currentColor"
                     viewBox="0 0 24 24"
@@ -98,20 +98,20 @@ export default function Home() {
                   </svg>
                 </div>
               </div>
-              <h3 className="text-lg font-semibold text-gray-900 mb-2">趣味</h3>
-              <p className="text-gray-600 text-sm">
+              <h3 className="mb-2 text-lg font-semibold text-gray-900">趣味</h3>
+              <p className="text-sm text-gray-600">
                 プライベートでの活動や興味のあることについて
               </p>
             </Link>
 
             <Link
               href="/self-pr"
-              className="bg-white rounded-xl shadow-lg p-6 hover:shadow-xl transition-shadow duration-300 group"
+              className="group rounded-xl bg-white p-6 shadow-lg transition-shadow duration-300 hover:shadow-xl"
             >
-              <div className="flex items-center mb-4">
-                <div className="w-12 h-12 bg-purple-100 rounded-lg flex items-center justify-center group-hover:bg-purple-200 transition-colors">
+              <div className="mb-4 flex items-center">
+                <div className="flex h-12 w-12 items-center justify-center rounded-lg bg-purple-100 transition-colors group-hover:bg-purple-200">
                   <svg
-                    className="w-6 h-6 text-purple-600"
+                    className="h-6 w-6 text-purple-600"
                     fill="none"
                     stroke="currentColor"
                     viewBox="0 0 24 24"
@@ -125,10 +125,10 @@ export default function Home() {
                   </svg>
                 </div>
               </div>
-              <h3 className="text-lg font-semibold text-gray-900 mb-2">
+              <h3 className="mb-2 text-lg font-semibold text-gray-900">
                 自己PR
               </h3>
-              <p className="text-gray-600 text-sm">
+              <p className="text-sm text-gray-600">
                 強みやスキル、これまでの取り組みについて
               </p>
             </Link>
