@@ -9,16 +9,7 @@ export const skillTagSeedData = [
     name: "Notion",
   },
   {
-    name: "HTML",
-  },
-  {
-    name: "CSS",
-  },
-  {
     name: "Sass",
-  },
-  {
-    name: "PHP",
   },
   {
     name: "Laravel",
@@ -33,9 +24,6 @@ export const skillTagSeedData = [
     name: "Python",
   },
   {
-    name: "JavaScript",
-  },
-  {
     name: "TypeScript",
   },
   {
@@ -48,19 +36,10 @@ export const skillTagSeedData = [
     name: "React",
   },
   {
-    name: "Next.js",
-  },
-  {
     name: "Playwright",
   },
   {
-    name: "Prisma",
-  },
-  {
     name: "MySQL",
-  },
-  {
-    name: "PostgreSQL",
   },
   {
     name: "Docker",
