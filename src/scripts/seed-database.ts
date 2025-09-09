@@ -10,7 +10,7 @@ async function main() {
 
   try {
     console.log("既存データを削除中...");
-    await prisma?.$transaction([
+    await prisma.$transaction([
       prisma.achievement.deleteMany(),
       prisma.skillTag.deleteMany(),
       prisma.qualification.deleteMany(),
@@ -19,26 +19,50 @@ async function main() {
     console.log("既存データを削除しました");
 
     console.log("経歴データを作成中...");
-    for (const data of careerSeedData) {
-      await prisma?.career.create({
-        data: {
-          ...data,
-          employmentType: data.employmentType as EmploymentType,
-        },
+    for (const [index, data] of careerSeedData.entries()) {
+      console.log(`処理中 ${index + 1}/${careerSeedData.length}:`, {
+        company: data.company,
+        employmentType: data.employmentType,
+        startDate: data.startDate,
+        endDate: data.endDate,
       });
+
+      try {
+        await prisma.career.create({
+          data: {
+            company: data.company,
+            url: data.url,
+            employmentType: data.employmentType as EmploymentType,
+            startDate: data.startDate,
+            endDate: data.endDate,
+            description: data.description,
+          },
+        });
+        console.log(`✅ ${data.company} の経歴を作成しました`);
+      } catch (error) {
+        console.error(`❌ ${data.company} の経歴作成でエラー:`, error);
+        throw error;
+      }
     }
     console.log(`✅ ${careerSeedData.length}件の経歴を作成しました`);
 
     console.log("スキルタグデータを作成中...");
     for (const data of skillTagSeedData) {
-      await prisma?.skillTag.create({ data });
+      await prisma.skillTag.create({
+        data: {
+          name: data.name,
+        },
+      });
     }
+    console.log(`✅ ${skillTagSeedData.length}件のスキルタグを作成しました`);
 
     console.log("実績データを作成中...");
     for (const data of achievementSeedData) {
-      await prisma?.achievement.create({
+      await prisma.achievement.create({
         data: {
-          ...data,
+          startDate: data.startDate,
+          endDate: data.endDate,
+          description: data.description,
           skills: {
             connect: data.skills.map((name: string) => ({ name })),
           },
@@ -49,7 +73,12 @@ async function main() {
 
     console.log("資格データを作成中...");
     for (const data of qualificationSeedData) {
-      await prisma?.qualification.create({ data });
+      await prisma.qualification.create({
+        data: {
+          name: data.name,
+          acquiredAt: data.acquiredAt,
+        },
+      });
     }
     console.log(`✅ ${qualificationSeedData.length}件の資格を作成しました`);
 
@@ -58,7 +87,7 @@ async function main() {
     console.error("❌ シード中にエラーが発生しました:", error);
     throw error;
   } finally {
-    await prisma?.$disconnect();
+    await prisma.$disconnect();
   }
 }
 
