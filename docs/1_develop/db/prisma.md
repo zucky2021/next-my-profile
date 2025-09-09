@@ -26,3 +26,11 @@ npx prisma db seed
 
 npm run dev
 ```
+
+### 本番環境でseed実行
+
+- こちらのコマンドを実行
+
+```sh
+npx dotenv -e .env.production -- npx prisma db seed
+```
