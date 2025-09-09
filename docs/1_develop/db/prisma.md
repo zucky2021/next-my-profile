@@ -13,6 +13,24 @@
 3. Generate Prisma Client: `npx prisma generate`
 4. (Restart IDE)
 
+### 初期データ登録
+
+#### Local
+
+```sh
+npx prisma db seed
+```
+
+#### Production
+
+```sh
+# 本番環境の環境変数を取得
+vercel env pull .env.production
+
+# 本番環境でseed実行
+npx dotenv -e .env.production -- npx prisma db seed
+```
+
 ### リセット
 
 ```sh

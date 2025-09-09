@@ -1,42 +1,45 @@
 export const skillTagSeedData = [
   {
-    name: "HTML",
+    name: "QC",
   },
   {
-    name: "CSS",
+    name: "Team Management",
+  },
+  {
+    name: "Notion",
   },
   {
     name: "Sass",
   },
   {
-    name: "PHP",
+    name: "Laravel",
   },
   {
-    name: "Laravel",
+    name: "Larastan",
+  },
+  {
+    name: "PHPUnit",
   },
   {
     name: "Python",
   },
   {
-    name: "JavaScript",
+    name: "TypeScript",
   },
   {
-    name: "TypeScript",
+    name: "Jenkins",
+  },
+  {
+    name: "Backlog",
   },
   {
     name: "React",
   },
   {
-    name: "Next.js",
-  },
-  {
-    name: "Prisma",
+    name: "Playwright",
   },
   {
     name: "MySQL",
-  },
-  {
-    name: "PostgreSQL",
   },
   {
     name: "Docker",
@@ -49,5 +52,50 @@ export const skillTagSeedData = [
   },
   {
     name: "CI/CD",
+  },
+  {
+    name: "Clean Architecture",
+  },
+  {
+    name: "DDD",
+  },
+  {
+    name: "Go",
+  },
+  {
+    name: "Gin",
+  },
+  {
+    name: "Bitbucket",
+  },
+  {
+    name: "Confluence",
+  },
+  {
+    name: "JIRA",
+  },
+  {
+    name: "Vite",
+  },
+  {
+    name: "Tailwind CSS",
+  },
+  {
+    name: "Slack",
+  },
+  {
+    name: "Agile Development",
+  },
+  {
+    name: "Scrum Development",
+  },
+  {
+    name: "GitHub Flow",
+  },
+  {
+    name: "Git Flow",
+  },
+  {
+    name: "Docs as Code",
   },
 ];

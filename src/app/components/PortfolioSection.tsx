@@ -42,7 +42,7 @@ export function PortfolioSection() {
       }
 
       const response = await fetch(
-        `${apiBaseUrl}/users/${username}/repos?sort=${sort}&direction=${direction}&per_page=${perPage}`,
+        `${apiBaseUrl}/users/${username}/repos?sort=${sort}&direction=${direction}&per_page=${perPage}`
       );
       if (!response.ok) {
         throw new Error(`Failed to fetch: ${response.status}`);
@@ -78,16 +78,16 @@ export function PortfolioSection() {
 
   if (portfolioData.loading) {
     return (
-      <section className="bg-white rounded-xl shadow-lg p-8">
-        <h2 className="text-2xl font-bold text-gray-900 mb-6">
+      <section className="rounded-xl bg-white p-8 shadow-lg">
+        <h2 className="mb-6 text-2xl font-bold text-gray-900">
           ポートフォリオ
         </h2>
         <div className="animate-pulse space-y-4">
           {[...Array(3)].map((_, i) => (
-            <div key={i} className="border rounded-lg p-4">
-              <div className="h-4 bg-gray-200 rounded w-1/4 mb-2"></div>
-              <div className="h-3 bg-gray-200 rounded w-3/4 mb-2"></div>
-              <div className="h-3 bg-gray-200 rounded w-1/2"></div>
+            <div key={i} className="rounded-lg border p-4">
+              <div className="mb-2 h-4 w-1/4 rounded bg-gray-200"></div>
+              <div className="mb-2 h-3 w-3/4 rounded bg-gray-200"></div>
+              <div className="h-3 w-1/2 rounded bg-gray-200"></div>
             </div>
           ))}
         </div>
@@ -97,15 +97,15 @@ export function PortfolioSection() {
 
   if (portfolioData.error) {
     return (
-      <section className="bg-white rounded-xl shadow-lg p-8">
-        <h2 className="text-2xl font-bold text-gray-900 mb-6">
+      <section className="rounded-xl bg-white p-8 shadow-lg">
+        <h2 className="mb-6 text-2xl font-bold text-gray-900">
           ポートフォリオ
         </h2>
-        <div className="text-center py-8">
-          <p className="text-red-600 mb-4">{portfolioData.error}</p>
+        <div className="py-8 text-center">
+          <p className="mb-4 text-red-600">{portfolioData.error}</p>
           <button
             onClick={fetchPortfolioData}
-            className="px-4 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition-colors"
+            className="rounded-lg bg-blue-600 px-4 py-2 text-white transition-colors hover:bg-blue-700"
           >
             再試行
           </button>
@@ -115,21 +115,21 @@ export function PortfolioSection() {
   }
 
   return (
-    <section className="bg-white rounded-xl shadow-lg p-8">
-      <h2 className="text-2xl font-bold text-gray-900 mb-6">ポートフォリオ</h2>
+    <section className="rounded-xl bg-white p-8 shadow-lg">
+      <h2 className="mb-6 text-2xl font-bold text-gray-900">ポートフォリオ</h2>
       <div className="grid gap-6">
         {portfolioData.repositories.map((repo) => (
           <div
             key={repo.id}
-            className="border border-gray-200 rounded-lg p-6 hover:shadow-md transition-shadow"
+            className="rounded-lg border border-gray-200 p-6 transition-shadow hover:shadow-md"
           >
-            <div className="flex items-start justify-between mb-3">
+            <div className="mb-3 flex items-start justify-between">
               <h3 className="text-xl font-semibold text-gray-900">
                 <a
                   href={repo.html_url}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="hover:text-blue-600 transition-colors"
+                  className="transition-colors hover:text-blue-600"
                 >
                   {repo.name}
                 </a>
@@ -137,7 +137,7 @@ export function PortfolioSection() {
               <div className="flex items-center space-x-2 text-sm text-gray-500">
                 <span>⭐ {repo.stargazers_count}</span>
                 {repo.language && (
-                  <span className="bg-blue-100 text-blue-800 px-2 py-1 rounded-full text-xs">
+                  <span className="rounded-full bg-blue-100 px-2 py-1 text-xs text-blue-800">
                     {repo.language}
                   </span>
                 )}
@@ -145,16 +145,16 @@ export function PortfolioSection() {
             </div>
 
             {repo.description && (
-              <p className="text-gray-600 mb-4 line-clamp-2">
+              <p className="mb-4 line-clamp-2 text-gray-600">
                 {repo.description}
               </p>
             )}
 
-            <div className="flex flex-wrap gap-2 mb-3">
-              {repo.topics.slice(0, 5).map((topic) => (
+            <div className="mb-3 flex flex-wrap gap-2">
+              {repo.topics.map((topic) => (
                 <span
                   key={topic}
-                  className="bg-gray-100 text-gray-700 px-2 py-1 rounded-full text-xs"
+                  className="rounded-full bg-gray-100 px-2 py-1 text-xs text-gray-700"
                 >
                   {topic}
                 </span>
