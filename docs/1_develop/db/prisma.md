@@ -9,10 +9,8 @@
 ### マイグレーション
 
 1. Edit [schema](../../../prisma/schema.prisma)
-2. Create migration file
-   1. `npm run db:migrate`
-3. Generate Prisma Client
-   1. `npm run db:generate`
+2. Create migration file: `npx prisma migrate dev`
+3. Generate Prisma Client: `npx prisma generate`
 4. (Restart IDE)
 
 ### リセット
@@ -22,9 +20,9 @@ rm -rf prisma/migrations
 
 npx prisma db push --force-reset
 
-npm run db:migrate
+npx prisma migrate dev
 
-npm run db:seed
+npx prisma db seed
 
 npm run dev
 ```

@@ -5,12 +5,8 @@
   "scripts": {
     "dev": "next dev --turbopack",
     "build": "prisma generate && next build",
-    "db:deploy": "prisma migrate deploy",
     "start": "next start",
     "lint": "next lint",
-    "db:migrate": "prisma migrate dev",
-    "db:generate": "prisma generate",
-    "db:seed": "tsx src/scripts/seed-database.ts",
     "prepare": "husky",
     "format": "prettier --write ."
   },
@@ -53,5 +49,8 @@
   "engines": {
     "node": ">=18.0.0",
     "npm": ">=8.0.0"
+  },
+  "prisma": {
+    "seed": "tsx src/scripts/seed-database.ts"
   }
 }
