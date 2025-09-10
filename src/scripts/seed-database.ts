@@ -18,6 +18,20 @@ async function main() {
     ]);
     console.log("既存データを削除しました");
 
+    await prisma.$executeRawUnsafe(
+      `TRUNCATE TABLE "careers" RESTART IDENTITY CASCADE`
+    );
+    await prisma.$executeRawUnsafe(
+      `TRUNCATE TABLE "skill_tags" RESTART IDENTITY CASCADE`
+    );
+    await prisma.$executeRawUnsafe(
+      `TRUNCATE TABLE "achievements" RESTART IDENTITY CASCADE`
+    );
+    await prisma.$executeRawUnsafe(
+      `TRUNCATE TABLE "qualifications" RESTART IDENTITY CASCADE`
+    );
+    console.log("既存データを削除＆idをリセットしました");
+
     console.log("経歴データを作成中...");
     for (const [index, data] of careerSeedData.entries()) {
       console.log(`処理中 ${index + 1}/${careerSeedData.length}:`, {
