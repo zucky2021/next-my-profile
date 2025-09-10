@@ -6,6 +6,12 @@
 
 ## 操作
 
+### 整形
+
+```sh
+npx prisma format
+```
+
 ### マイグレーション
 
 1. Edit [schema](../../../prisma/schema.prisma)
