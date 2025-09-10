@@ -36,13 +36,29 @@ export default function Home() {
           <div className="mb-8 rounded-xl bg-white p-8 shadow-lg">
             <h2 className="mb-4 text-2xl font-bold text-gray-900">はじめに</h2>
             <p className="mb-6 leading-relaxed text-gray-700">
-              ご覧いただきありがとうございます。私はフルスタックエンジニアとして、
-              フロントエンドからバックエンドまで幅広い技術領域で開発を行っています。
-              特にNext.js、React、Go、Laravelを用いたWebアプリケーション開発を得意としており、
-              ユーザー体験を重視した高品質なソフトウェアの構築に情熱を注いでいます。
+              ご覧いただきありがとうございます。三重県出身のフルスタックエンジニアの鈴木宏尭と申します。
+              <br />
+              <strong>「ものづくりへの情熱」</strong>
+              を胸に製造業からITエンジニアへの挑戦を決意し、現在はものづくりの最前線で活躍しています。
+            </p>
+            <p className="mb-6 leading-relaxed text-gray-700">
+              トヨタグループで4年間チームマネジメントと継続的改善活動を通じて組織全体の生産性向上に貢献しました。
+              <br />
+              学生時代の野球・弓道部で培った
+              <strong>チームワークと粘り強さ</strong>
+              が、この成果の原動力となっています。
+            </p>
+            <p className="mb-6 leading-relaxed text-gray-700">
+              その後、プログラミングスクールで基礎を学び、現在は
+              <strong>React、Go、Laravel</strong>
+              を駆使した Webアプリケーション開発を得意としています。
+              <br />
+              トヨタグループで身につけた
+              <strong>品質管理と効率化のマインド</strong>
+              を活かし、
+              ユーザー体験を最優先に考えた高品質なソフトウェア開発に取り組んでいます。
             </p>
 
-            {/* SNSシェアボタン */}
             <div className="border-t border-gray-200 pt-6">
               <SnsBtn />
             </div>
