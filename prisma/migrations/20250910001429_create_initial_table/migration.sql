@@ -1,3 +1,21 @@
+-- CreateEnum
+CREATE TYPE "public"."EmploymentType" AS ENUM ('FULL_TIME', 'PART_TIME', 'CONTRACT', 'TEMPORARY', 'INTERN');
+
+-- CreateTable
+CREATE TABLE "public"."careers" (
+    "id" SERIAL NOT NULL,
+    "company" TEXT NOT NULL,
+    "url" TEXT NOT NULL,
+    "employmentType" "public"."EmploymentType" NOT NULL,
+    "startDate" TIMESTAMP(3) NOT NULL,
+    "endDate" TIMESTAMP(3),
+    "description" TEXT NOT NULL,
+    "createdAt" TIMESTAMP(3) NOT NULL DEFAULT CURRENT_TIMESTAMP,
+    "updatedAt" TIMESTAMP(3) NOT NULL,
+
+    CONSTRAINT "careers_pkey" PRIMARY KEY ("id")
+);
+
 -- CreateTable
 CREATE TABLE "public"."achievements" (
     "id" SERIAL NOT NULL,
@@ -21,6 +39,17 @@ CREATE TABLE "public"."skill_tags" (
 );
 
 -- CreateTable
+CREATE TABLE "public"."qualifications" (
+    "id" SERIAL NOT NULL,
+    "name" TEXT NOT NULL,
+    "acquiredAt" TIMESTAMP(3) NOT NULL,
+    "createdAt" TIMESTAMP(3) NOT NULL DEFAULT CURRENT_TIMESTAMP,
+    "updatedAt" TIMESTAMP(3) NOT NULL,
+
+    CONSTRAINT "qualifications_pkey" PRIMARY KEY ("id")
+);
+
+-- CreateTable
 CREATE TABLE "public"."_AchievementToSkillTag" (
     "A" INTEGER NOT NULL,
     "B" INTEGER NOT NULL,
@@ -29,7 +58,13 @@ CREATE TABLE "public"."_AchievementToSkillTag" (
 );
 
 -- CreateIndex
+CREATE INDEX "careers_startDate_idx" ON "public"."careers"("startDate");
+
+-- CreateIndex
 CREATE UNIQUE INDEX "skill_tags_name_key" ON "public"."skill_tags"("name");
+
+-- CreateIndex
+CREATE UNIQUE INDEX "qualifications_name_key" ON "public"."qualifications"("name");
 
 -- CreateIndex
 CREATE INDEX "_AchievementToSkillTag_B_index" ON "public"."_AchievementToSkillTag"("B");
