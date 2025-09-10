@@ -38,25 +38,23 @@ export default function Home() {
             <p className="mb-6 leading-relaxed text-gray-700">
               ご覧いただきありがとうございます。三重県出身のフルスタックエンジニアの鈴木宏尭と申します。
               <br />
-              <strong className="text-gray-900">「ものづくりへの情熱」</strong>
+              <strong>「ものづくりへの情熱」</strong>
               を胸に製造業からITエンジニアへの挑戦を決意し、現在はものづくりの最前線で活躍しています。
             </p>
             <p className="mb-6 leading-relaxed text-gray-700">
               トヨタグループで4年間チームマネジメントと継続的改善活動を通じて組織全体の生産性向上に貢献しました。
               <br />
               学生時代の野球・弓道部で培った
-              <strong className="text-gray-900">チームワークと粘り強さ</strong>
+              <strong>チームワークと粘り強さ</strong>
               が、この成果の原動力となっています。
             </p>
             <p className="mb-6 leading-relaxed text-gray-700">
               その後、プログラミングスクールで基礎を学び、現在は
-              <strong className="text-gray-900">React、Go、Laravel</strong>
+              <strong>React、Go、Laravel</strong>
               を駆使した Webアプリケーション開発を得意としています。
               <br />
               トヨタグループで身につけた
-              <strong className="text-gray-900">
-                品質管理と効率化のマインド
-              </strong>
+              <strong>品質管理と効率化のマインド</strong>
               を活かし、
               ユーザー体験を最優先に考えた高品質なソフトウェア開発に取り組んでいます。
             </p>
