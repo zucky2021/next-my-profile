@@ -1,5 +1,5 @@
-import { getAchievements } from "@/dal/achievement/getAchievements";
-import { getCareers } from "@/dal/career/getCareers";
+import { getAchievements } from "@/features/achievement/getAchievements";
+import { getCareers } from "@/features/career/getCareers";
 import { SkillTag } from "@prisma/client";
 import { Metadata } from "next";
 import React from "react";

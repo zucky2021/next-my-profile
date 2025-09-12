@@ -1,9 +1,9 @@
-import prisma from "../lib/prisma";
-import { careerSeedData } from "../dal/career/seed-data";
+import prisma from "../shared/lib/prisma";
+import { careerSeedData } from "../features/career/seed-data";
 import { EmploymentType } from "@prisma/client";
-import { achievementSeedData } from "@/dal/achievement/seed-data";
-import { skillTagSeedData } from "@/dal/skill-tag/seed-data";
-import { qualificationSeedData } from "../dal/qualification/seed-data";
+import { achievementSeedData } from "@/features/achievement/seed-data";
+import { skillTagSeedData } from "@/features/skill-tag/seed-data";
+import { qualificationSeedData } from "../features/qualification/seed-data";
 
 async function main() {
   console.log("🌱 データベースのシードを開始します...");
