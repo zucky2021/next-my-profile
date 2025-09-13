@@ -36,7 +36,7 @@ erDiagram
     String url
     EmploymentType employmentType
     DateTime startDate
-    DateTime endDate
+    DateTime endDate "nullable"
     String description
     DateTime createdAt
     DateTime updatedAt
@@ -44,26 +44,25 @@ erDiagram
   Achievement {
     Int id PK
     DateTime startDate
-    DateTime endDate
+    DateTime endDate "nullable"
     String description
     DateTime createdAt
     DateTime updatedAt
   }
   SkillTag {
     Int id PK
-    String name
+    String name "unique"
     DateTime createdAt
     DateTime updatedAt
   }
+  Achievement }o--o{ SkillTag : "many-to-many"
   Qualification {
     Int id PK
-    String name
+    String name "unique"
     DateTime acquiredAt
     DateTime createdAt
     DateTime updatedAt
   }
-
-  Achievement ||--|| SkillTag : "skills"
 ```
 
 ## API仕様
