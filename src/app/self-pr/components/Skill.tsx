@@ -39,28 +39,28 @@ export function SkillsSection() {
   ];
 
   return (
-    <section className="bg-white rounded-xl shadow-lg p-8">
-      <h2 className="text-2xl font-bold text-gray-900 mb-6">技術スキル</h2>
+    <section className="rounded-xl bg-white p-8 shadow-lg">
+      <h2 className="mb-6 text-2xl font-bold text-gray-900">技術スキル</h2>
       <div className="space-y-8">
         {skills.map((category) => (
           <div key={category.category}>
-            <h3 className="text-lg font-semibold text-gray-800 mb-4">
+            <h3 className="mb-4 text-lg font-semibold text-gray-800">
               {category.category}
             </h3>
             <div className="space-y-3">
               {category.skills.map((skill) => (
                 <div key={skill.name}>
-                  <div className="flex justify-between items-center mb-2">
-                    <span className="text-gray-700 font-medium">
+                  <div className="mb-2 flex items-center justify-between">
+                    <span className="font-medium text-gray-700">
                       {skill.name}
                     </span>
-                    <span className="text-gray-500 text-sm">
+                    <span className="text-sm text-gray-500">
                       {skill.level}%
                     </span>
                   </div>
-                  <div className="w-full bg-gray-200 rounded-full h-2">
+                  <div className="h-2 w-full rounded-full bg-gray-200">
                     <div
-                      className="bg-blue-600 h-2 rounded-full transition-all duration-300"
+                      className="h-2 rounded-full bg-blue-600 transition-all duration-300"
                       style={{ width: `${skill.level}%` }}
                     ></div>
                   </div>

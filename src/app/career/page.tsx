@@ -1,6 +1,5 @@
-import { getAchievements } from "@/dal/achievement/getAchievements";
-import { getCareers } from "@/dal/career/getCareers";
-import { SkillTag } from "@prisma/client";
+import { getAchievements } from "@/features/achievement/getAchievements";
+import { getCareers } from "@/features/career/getCareers";
 import { Metadata } from "next";
 import React from "react";
 
@@ -10,8 +9,10 @@ export const metadata: Metadata = {
 };
 
 const CareerPage = async () => {
-  const careers = await getCareers();
-  const achievements = await getAchievements();
+  const [careers, achievements] = await Promise.all([
+    getCareers(),
+    getAchievements(),
+  ]);
 
   return (
     <div className="container mx-auto max-w-4xl px-4 py-8">
@@ -36,9 +37,9 @@ const CareerPage = async () => {
                   <p className="text-gray-600">{career.description}</p>
                 </div>
                 <span className="rounded-full bg-gray-100 px-3 py-1 text-sm text-gray-500">
-                  {career.startDate.toLocaleDateString()} -{" "}
+                  {career.startDate.toLocaleDateString("ja-JP")} -{" "}
                   {career.endDate
-                    ? career.endDate.toLocaleDateString()
+                    ? career.endDate.toLocaleDateString("ja-JP")
                     : "現在"}
                 </span>
               </div>
@@ -82,7 +83,7 @@ const CareerPage = async () => {
               </p>
               {achievement.skills && (
                 <div className="flex flex-wrap gap-2">
-                  {achievement.skills.map((skillTag: SkillTag) => (
+                  {achievement.skills.map((skillTag) => (
                     <span
                       key={skillTag.id}
                       className="rounded bg-green-100 px-2 py-1 text-xs text-green-800"
