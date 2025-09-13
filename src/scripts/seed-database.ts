@@ -18,18 +18,7 @@ async function main() {
     ]);
     console.log("既存データを削除しました");
 
-    await prisma.$executeRawUnsafe(
-      `TRUNCATE TABLE "careers" RESTART IDENTITY CASCADE`
-    );
-    await prisma.$executeRawUnsafe(
-      `TRUNCATE TABLE "skill_tags" RESTART IDENTITY CASCADE`
-    );
-    await prisma.$executeRawUnsafe(
-      `TRUNCATE TABLE "achievements" RESTART IDENTITY CASCADE`
-    );
-    await prisma.$executeRawUnsafe(
-      `TRUNCATE TABLE "qualifications" RESTART IDENTITY CASCADE`
-    );
+    await prisma.$executeRaw`TRUNCATE TABLE "achievements", "skill_tags", "qualifications", "careers" RESTART IDENTITY CASCADE`;
     console.log("既存データを削除＆idをリセットしました");
 
     console.log("経歴データを作成中...");
