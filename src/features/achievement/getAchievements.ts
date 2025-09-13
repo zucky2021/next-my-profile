@@ -5,8 +5,19 @@ import prisma from "@/shared/lib/prisma";
  * @returns Achievement[]
  */
 export const getAchievements = async () => {
-  return await prisma?.achievement.findMany({
+  return await prisma.achievement.findMany({
     orderBy: { startDate: "desc" },
-    include: { skills: true },
+    select: {
+      id: true,
+      startDate: true,
+      endDate: true,
+      description: true,
+      skills: {
+        select: {
+          id: true,
+          name: true,
+        },
+      },
+    },
   });
 };

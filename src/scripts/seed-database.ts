@@ -9,17 +9,9 @@ async function main() {
   console.log("🌱 データベースのシードを開始します...");
 
   try {
-    console.log("既存データを削除中...");
-    await prisma.$transaction([
-      prisma.achievement.deleteMany(),
-      prisma.skillTag.deleteMany(),
-      prisma.qualification.deleteMany(),
-      prisma.career.deleteMany(),
-    ]);
-    console.log("既存データを削除しました");
-
+    console.log("既存データをTRUNCATEで削除及びIDリセット中...");
     await prisma.$executeRaw`TRUNCATE TABLE "achievements", "skill_tags", "qualifications", "careers" RESTART IDENTITY CASCADE`;
-    console.log("既存データを削除＆idをリセットしました");
+    console.log("既存データのTRUNCATEが完了しました");
 
     console.log("経歴データを作成中...");
     for (const [index, data] of careerSeedData.entries()) {
