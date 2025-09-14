@@ -9,5 +9,5 @@
   },
   "editor.formatOnPaste": true,
   "editor.formatOnSave": true,
-  "cSpell.words": ["Apidog", "Supabase"]
+  "cSpell.words": ["Apidog", "Laravel", "Supabase"]
 }

@@ -12,6 +12,8 @@
     "jgclark.vscode-todo-highlight",
     "gruntfuggly.todo-tree",
     "prisma.prisma",
-    "coderabbit.coderabbit-vscode"
+    "coderabbit.coderabbit-vscode",
+    "ms-playwright.playwright",
+    "github.vscode-github-actions"
   ]
 }
