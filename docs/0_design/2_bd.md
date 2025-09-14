@@ -6,8 +6,6 @@
 
 - トップページ
   - プロフィール
-  - 趣味
-  - 資格
 - 経歴ページ
   - 職務要約
   - 転職歴
@@ -15,10 +13,13 @@
 - 自己PRページ
   - 強み
   - ポートフォリオ
+  - 資格
+- 趣味ページ
 
 ## 技術スタック
 
 - フレームワーク: [Next.js](https://nextjsjp.org/)
+- 言語: [TypeScript](https://www.typescriptlang.org/)
 - DB: [supabase](https://supabase.com/)
 
 ## クラウドプラットフォーム

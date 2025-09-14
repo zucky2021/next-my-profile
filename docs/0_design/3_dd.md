@@ -2,6 +2,30 @@
 
 - [基本設計](./2_bd.md)で決めた内容をエンジニアが実装できるレベルまで具体化
 
+## ディレクトリ構造
+
+- 基本概念は**feature-based**
+
+```sh
+.
+├── docs # Documents
+├── prisma # DB schema
+├── public
+├── README.md
+├── src
+│   ├── app # Next.js App Router（ルーティング）
+│   ├── features # 機能別
+│   ├── scripts # スクリプト
+│   └── shared # 共通
+│       ├── components # 共通コンポーネント
+│       ├── constants # 定数
+│       └── lib # ユーティリティライブラリ
+├── supabase # Local DB
+└── tsconfig.json
+```
+
+Ref: `tree -I node_modules`
+
 ## DBテーブル設計
 
 ```mermaid
@@ -12,7 +36,7 @@ erDiagram
     String url
     EmploymentType employmentType
     DateTime startDate
-    DateTime endDate
+    DateTime endDate "nullable"
     String description
     DateTime createdAt
     DateTime updatedAt
@@ -20,26 +44,25 @@ erDiagram
   Achievement {
     Int id PK
     DateTime startDate
-    DateTime endDate
+    DateTime endDate "nullable"
     String description
     DateTime createdAt
     DateTime updatedAt
   }
   SkillTag {
     Int id PK
-    String name
+    String name "unique"
     DateTime createdAt
     DateTime updatedAt
   }
+  Achievement }o--o{ SkillTag : "many-to-many"
   Qualification {
     Int id PK
-    String name
+    String name "unique"
     DateTime acquiredAt
     DateTime createdAt
     DateTime updatedAt
   }
-
-  Achievement ||--|| SkillTag : "skills"
 ```
 
 ## API仕様

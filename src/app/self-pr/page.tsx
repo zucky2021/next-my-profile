@@ -1,12 +1,12 @@
-import { PortfolioSection } from "@/app/components/PortfolioSection";
-import { SkillsSection } from "@/app/components/SkillsSection";
+import { PortfolioSection } from "./components/Portfolio";
+import { SkillsSection } from "./components/Skill";
 
 export default function SelfPRPage() {
   return (
     <div className="min-h-screen bg-gradient-to-br from-blue-50 to-indigo-100">
       <div className="container mx-auto px-4 py-8">
-        <header className="text-center mb-12">
-          <h1 className="text-4xl font-bold text-gray-900 mb-4">自己PR</h1>
+        <header className="mb-12 text-center">
+          <h1 className="mb-4 text-4xl font-bold text-gray-900">自己PR</h1>
           <p className="text-xl text-gray-600">
             エンジニアとしての成長と実績をご紹介します
           </p>
@@ -17,11 +17,11 @@ export default function SelfPRPage() {
 
           <PortfolioSection />
 
-          <article className="bg-white rounded-xl shadow-lg p-8">
-            <h2 className="text-2xl font-bold text-gray-900 mb-6">PR文</h2>
+          <article className="rounded-xl bg-white p-8 shadow-lg">
+            <h2 className="mb-6 text-2xl font-bold text-gray-900">PR文</h2>
 
             <section className="mb-4 rounded-lg p-4 shadow-md">
-              <h3 className="text-lg font-semibold text-gray-900 mb-4">
+              <h3 className="mb-4 text-lg font-semibold text-gray-900">
                 情報収集とメンバーの知識向上のための共有
               </h3>
               <p>
@@ -47,7 +47,7 @@ export default function SelfPRPage() {
             </section>
 
             <section className="mb-4 rounded-lg p-4 shadow-md">
-              <h3 className="text-lg font-semibold text-gray-900 mb-4">
+              <h3 className="mb-4 text-lg font-semibold text-gray-900">
                 業務を進める上での責任感
               </h3>
               <p>
@@ -62,7 +62,7 @@ export default function SelfPRPage() {
             </section>
 
             <section className="mb-4 rounded-lg p-4 shadow-md">
-              <h3 className="text-lg font-semibold text-gray-900 mb-4">
+              <h3 className="mb-4 text-lg font-semibold text-gray-900">
                 サービス拡大のための開発力
               </h3>
               <p>
