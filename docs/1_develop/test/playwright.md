@@ -17,3 +17,9 @@ npx playwright test
 ```sh
 npx playwright test --ui
 ```
+
+### テスト箇所を指定
+
+```sh
+npx playwright test --ui home.spec.ts
+```

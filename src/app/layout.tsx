@@ -14,7 +14,7 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "鈴木宏尭 | Official Site",
+  title: "トップ | 鈴木宏尭",
   description:
     "三重県出身の鈴木宏尭のプロフィールサイト。Go、Laravel、React、TypeScriptを駆使したWebアプリケーション開発を得意としています。",
   keywords: [

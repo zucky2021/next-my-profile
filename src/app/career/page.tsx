@@ -4,7 +4,7 @@ import { Metadata } from "next";
 import React from "react";
 
 export const metadata: Metadata = {
-  title: "経歴 | My Profile",
+  title: "経歴 | 鈴木宏尭",
   description: "転職歴と業務実績の詳細",
 };
 
@@ -18,14 +18,14 @@ const CareerPage = async () => {
     <div className="container mx-auto max-w-4xl px-4 py-8">
       <h1 className="mb-8 text-center text-4xl font-bold">経歴</h1>
 
-      <section className="mb-12">
+      <section className="mb-12" id="career">
         <h2 className="mb-6 border-b-2 border-gray-200 pb-2 text-2xl font-semibold text-gray-800">
           転職歴
         </h2>
 
-        <div className="space-y-8">
+        <ul className="space-y-8">
           {careers?.map((career) => (
-            <div
+            <li
               key={career.id}
               className="rounded-lg border-l-4 border-blue-500 bg-white p-6 shadow-md"
             >
@@ -51,26 +51,27 @@ const CareerPage = async () => {
               >
                 企業情報
               </a>
-            </div>
+            </li>
           ))}
-        </div>
+        </ul>
       </section>
 
-      <section className="mb-12">
+      <section className="mb-12" id="achievement">
         <h2 className="mb-6 border-b-2 border-gray-200 pb-2 text-2xl font-semibold text-gray-800">
           主要業務実績
         </h2>
 
-        <div className="space-y-6">
+        <ul className="space-y-6" aria-label="主要業務実績リスト">
           {achievements?.map((achievement) => (
-            <div
+            <li
               key={achievement.id}
               className="rounded-lg border-l-4 border-green-500 bg-white p-6 shadow-md"
+              aria-label="主要業務実績"
             >
               <p className="mb-2 rounded-full text-gray-600">
-                {achievement.startDate.toLocaleDateString()} -{" "}
+                {achievement.startDate.toLocaleDateString("ja-JP")} -{" "}
                 {achievement.endDate
-                  ? achievement.endDate.toLocaleDateString()
+                  ? achievement.endDate.toLocaleDateString("ja-JP")
                   : "現在"}
               </p>
               <p className="mb-4 text-gray-700">
@@ -82,30 +83,33 @@ const CareerPage = async () => {
                 ))}
               </p>
               {achievement.skills && (
-                <div className="flex flex-wrap gap-2">
+                <ul
+                  className="flex flex-wrap gap-2"
+                  aria-label="スキルタグリスト"
+                >
                   {achievement.skills.map((skillTag) => (
-                    <span
+                    <li
                       key={skillTag.id}
                       className="rounded bg-green-100 px-2 py-1 text-xs text-green-800"
+                      aria-label="スキルタグ"
                     >
                       {skillTag.name}
-                    </span>
+                    </li>
                   ))}
-                </div>
+                </ul>
               )}
-            </div>
+            </li>
           ))}
-        </div>
+        </ul>
       </section>
 
-      {/* スキルセクション */}
-      <section>
+      <section id="tech-skill">
         <h2 className="mb-6 border-b-2 border-gray-200 pb-2 text-2xl font-semibold text-gray-800">
           技術スキル
         </h2>
 
-        <div className="grid grid-cols-1 gap-6 md:grid-cols-2">
-          <div className="rounded-lg bg-white p-6 shadow-md">
+        <div className="grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-3">
+          <section className="rounded-lg bg-white p-6 shadow-md" id="frontend">
             <h3 className="mb-4 text-lg font-semibold text-gray-900">
               フロントエンド
             </h3>
@@ -138,9 +142,9 @@ const CareerPage = async () => {
                 </div>
               </div>
             </div>
-          </div>
+          </section>
 
-          <div className="rounded-lg bg-white p-6 shadow-md">
+          <section className="rounded-lg bg-white p-6 shadow-md" id="backend">
             <h3 className="mb-4 text-lg font-semibold text-gray-900">
               バックエンド
             </h3>
@@ -173,7 +177,71 @@ const CareerPage = async () => {
                 </div>
               </div>
             </div>
-          </div>
+          </section>
+
+          <section
+            className="rounded-lg bg-white p-6 shadow-md"
+            id="infrastructure"
+          >
+            <h3 className="mb-4 text-lg font-semibold text-gray-900">
+              インフラ・DevOps
+            </h3>
+            <div className="space-y-2">
+              <div className="flex items-center justify-between">
+                <span className="text-gray-700">AWS</span>
+                <div className="h-2 w-24 rounded-full bg-gray-200">
+                  <div
+                    className="h-2 rounded-full bg-orange-600"
+                    style={{ width: "75%" }}
+                  ></div>
+                </div>
+              </div>
+              <div className="flex items-center justify-between">
+                <span className="text-gray-700">Docker</span>
+                <div className="h-2 w-24 rounded-full bg-gray-200">
+                  <div
+                    className="h-2 rounded-full bg-orange-600"
+                    style={{ width: "70%" }}
+                  ></div>
+                </div>
+              </div>
+              <div className="flex items-center justify-between">
+                <span className="text-gray-700">CI/CD</span>
+                <div className="h-2 w-24 rounded-full bg-gray-200">
+                  <div
+                    className="h-2 rounded-full bg-orange-600"
+                    style={{ width: "65%" }}
+                  ></div>
+                </div>
+              </div>
+            </div>
+          </section>
+
+          <section className="rounded-lg bg-white p-6 shadow-md" id="database">
+            <h3 className="mb-4 text-lg font-semibold text-gray-900">
+              データベース
+            </h3>
+            <div className="space-y-2">
+              <div className="flex items-center justify-between">
+                <span className="text-gray-700">PostgreSQL</span>
+                <div className="h-2 w-24 rounded-full bg-gray-200">
+                  <div
+                    className="h-2 rounded-full bg-indigo-600"
+                    style={{ width: "80%" }}
+                  ></div>
+                </div>
+              </div>
+              <div className="flex items-center justify-between">
+                <span className="text-gray-700">MySQL</span>
+                <div className="h-2 w-24 rounded-full bg-gray-200">
+                  <div
+                    className="h-2 rounded-full bg-indigo-600"
+                    style={{ width: "75%" }}
+                  ></div>
+                </div>
+              </div>
+            </div>
+          </section>
         </div>
       </section>
     </div>
