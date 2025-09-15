@@ -14,7 +14,7 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "トップ | 鈴木宏尭",
+  title: "プロフィール | 鈴木宏尭",
   description:
     "三重県出身の鈴木宏尭のプロフィールサイト。Go、Laravel、React、TypeScriptを駆使したWebアプリケーション開発を得意としています。",
   keywords: [
@@ -41,7 +41,7 @@ export const metadata: Metadata = {
     canonical: "/",
   },
   openGraph: {
-    title: "鈴木宏尭 | SE",
+    title: "プロフィール | 鈴木宏尭",
     description:
       "鈴木宏尭のプロフィールサイト。三重県出身でGo、Laravel、React、TypeScriptを駆使したWebアプリケーション開発を得意としています。",
     url: "https://next-my-profile-three.vercel.app/",
@@ -59,7 +59,7 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: "summary",
-    title: "鈴木宏尭 | SE",
+    title: "プロフィール | 鈴木宏尭",
     description:
       "鈴木宏尭のプロフィールサイト。三重県出身でGo、Laravel、React、TypeScriptを駆使したWebアプリケーション開発を得意としています。",
     images: ["/main.jpg"],

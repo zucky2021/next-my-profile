@@ -6,7 +6,7 @@ test.describe("ホームページ", () => {
   });
 
   test("ページが正常に表示される", async ({ page }) => {
-    await expect(page).toHaveTitle(/トップ | 鈴木宏尭/);
+    await expect(page).toHaveTitle(/プロフィール | 鈴木宏尭/);
     await expect(page.locator("h1")).toContainText("鈴木 宏尭");
   });
 
