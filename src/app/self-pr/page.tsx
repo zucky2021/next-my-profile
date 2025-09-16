@@ -17,7 +17,7 @@ export default function SelfPRPage() {
 
           <PortfolioSection />
 
-          <article className="rounded-xl bg-white p-8 shadow-lg">
+          <section className="rounded-xl bg-white p-8 shadow-lg">
             <h2 className="mb-6 text-2xl font-bold text-gray-900">PR文</h2>
 
             <section className="mb-4 rounded-lg p-4 shadow-md">
@@ -27,8 +27,30 @@ export default function SelfPRPage() {
               <p>
                 私は常に最新の技術やトレンドを把握するため、IT関連のメルマガを購読し、日々情報収集を行っており、
                 <br />
-                「Connpass」や「AWS Summit
-                Japan」、エンジニアイベントにも積極的に参加し、友人から得た情報も活用して、新しい技術のキャッチアップを続けています。
+                <a
+                  href="https://aws.amazon.com/jp/summits/japan/"
+                  target="_blank"
+                  className="text-blue-600 transition-colors hover:text-blue-800"
+                >
+                  AWS Summit Japan
+                </a>
+                に参加したり、
+                <a
+                  href="https://connpass.com/dashboard/"
+                  target="_blank"
+                  className="text-blue-600 transition-colors hover:text-blue-800"
+                >
+                  Connpass
+                </a>
+                や
+                <a
+                  href="https://techplay.jp/"
+                  target="_blank"
+                  className="text-blue-600 transition-colors hover:text-blue-800"
+                >
+                  TechPlay
+                </a>
+                などの技術イベントにも積極的に参加し、友人から得た情報も活用して、新しい技術のキャッチアップを続けています。
                 <br />
                 プログラミングスクールやUdemyなどのコミュニティを通じて、仲間と共に学び、成長しています。
                 <br />
@@ -71,7 +93,7 @@ export default function SelfPRPage() {
                 さらに、「あるべき姿」を超える「ありたい姿」を上司に提案し、ボトムアップによる改善活動にも努めています。これにより、サービスの品質向上とユーザー満足度の向上に貢献してきました。
               </p>
             </section>
-          </article>
+          </section>
         </div>
       </div>
     </div>

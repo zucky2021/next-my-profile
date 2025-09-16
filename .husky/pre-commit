@@ -1,3 +1,19 @@
+#!/bin/sh
+
+# コミット対象のファイルがない場合はスキップ
+if [ -z "$(git diff --cached --name-only)" ]; then
+  echo "No staged files. Skipping pre-commit hook."
+  exit 0
+fi
+
+echo "Running lint-staged..."
+npx lint-staged
+if [ $? -ne 0 ]; then
+  echo "lint-staged failed. Aborting commit."
+  exit 1
+fi
+
+
 if [ -z "$(git diff --cached --name-only)" ]; then
   echo "No staged files. Skipping pre-commit hook."
   exit 0

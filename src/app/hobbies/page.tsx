@@ -1,10 +1,10 @@
 import { Metadata } from "next";
 
 export const metadata: Metadata = {
-  title: "趣味 | My Profile",
+  title: "趣味 | 鈴木宏尭",
   description: "私の趣味や興味のあること",
   openGraph: {
-    title: "趣味 | My Profile",
+    title: "趣味 | 鈴木宏尭",
     description: "私の趣味や興味のあること",
     type: "website",
   },
@@ -119,52 +119,52 @@ const hobbies: Hobby[] = [
 
 export default function HobbiesPage() {
   return (
-    <div className="container mx-auto px-4 py-8 max-w-6xl">
-      <div className="text-center mb-12">
-        <h1 className="text-4xl font-bold mb-4">趣味</h1>
-        <p className="text-xl text-gray-600 max-w-2xl mx-auto">
+    <div className="container mx-auto max-w-6xl px-4 py-8">
+      <div className="mb-12 text-center">
+        <h1 className="mb-4 text-4xl font-bold">趣味</h1>
+        <p className="mx-auto max-w-2xl text-xl text-gray-600">
           仕事以外の時間で楽しんでいることや、興味を持っていることを紹介します
         </p>
       </div>
 
       {/* 趣味一覧 */}
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mb-12">
+      <div className="mb-12 grid grid-cols-1 gap-8 md:grid-cols-2 lg:grid-cols-3">
         {hobbies.map((hobby) => (
           <div
             key={hobby.id}
-            className="bg-white rounded-lg shadow-md overflow-hidden hover:shadow-lg transition-shadow"
+            className="overflow-hidden rounded-lg bg-white shadow-md transition-shadow hover:shadow-lg"
           >
             <div className="p-6">
               {/* アイコンとタイトル */}
-              <div className="flex items-center mb-4">
-                <span className="text-3xl mr-3" aria-hidden="true">
+              <div className="mb-4 flex items-center">
+                <span className="mr-3 text-3xl" aria-hidden="true">
                   {hobby.icon}
                 </span>
                 <div>
                   <h2 className="text-xl font-semibold text-gray-900">
                     {hobby.title}
                   </h2>
-                  <span className="text-sm text-blue-600 bg-blue-100 px-2 py-1 rounded">
+                  <span className="rounded bg-blue-100 px-2 py-1 text-sm text-blue-600">
                     {hobby.category}
                   </span>
                 </div>
               </div>
 
               {/* 説明 */}
-              <p className="text-gray-600 mb-4">{hobby.description}</p>
+              <p className="mb-4 text-gray-600">{hobby.description}</p>
 
               {/* 詳細 */}
               <div className="mb-4">
-                <h3 className="text-sm font-semibold text-gray-900 mb-2">
+                <h3 className="mb-2 text-sm font-semibold text-gray-900">
                   具体的な活動
                 </h3>
                 <ul className="space-y-1">
                   {hobby.details.map((detail, index) => (
                     <li
                       key={index}
-                      className="text-sm text-gray-600 flex items-start"
+                      className="flex items-start text-sm text-gray-600"
                     >
-                      <span className="text-blue-500 mr-2">•</span>
+                      <span className="mr-2 text-blue-500">•</span>
                       {detail}
                     </li>
                   ))}
@@ -173,14 +173,14 @@ export default function HobbiesPage() {
 
               {/* 関連スキル */}
               <div>
-                <h3 className="text-sm font-semibold text-gray-900 mb-2">
+                <h3 className="mb-2 text-sm font-semibold text-gray-900">
                   関連スキル
                 </h3>
                 <div className="flex flex-wrap gap-2">
                   {hobby.relatedSkills.map((skill) => (
                     <span
                       key={skill}
-                      className="text-xs bg-gray-100 text-gray-700 px-2 py-1 rounded"
+                      className="rounded bg-gray-100 px-2 py-1 text-xs text-gray-700"
                     >
                       {skill}
                     </span>
@@ -193,19 +193,19 @@ export default function HobbiesPage() {
       </div>
 
       {/* 趣味の統計 */}
-      <section className="bg-gradient-to-r from-blue-600 to-purple-600 rounded-lg p-8 text-white mb-12">
-        <h2 className="text-2xl font-bold mb-6 text-center">趣味の統計</h2>
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+      <section className="mb-12 rounded-lg bg-gradient-to-r from-blue-600 to-purple-600 p-8 text-white">
+        <h2 className="mb-6 text-center text-2xl font-bold">趣味の統計</h2>
+        <div className="grid grid-cols-1 gap-8 md:grid-cols-3">
           <div className="text-center">
-            <div className="text-4xl font-bold mb-2">6</div>
+            <div className="mb-2 text-4xl font-bold">6</div>
             <div className="text-blue-100">主要な趣味</div>
           </div>
           <div className="text-center">
-            <div className="text-4xl font-bold mb-2">4</div>
+            <div className="mb-2 text-4xl font-bold">4</div>
             <div className="text-blue-100">カテゴリ</div>
           </div>
           <div className="text-center">
-            <div className="text-4xl font-bold mb-2">20+</div>
+            <div className="mb-2 text-4xl font-bold">20+</div>
             <div className="text-blue-100">関連スキル</div>
           </div>
         </div>
@@ -213,18 +213,18 @@ export default function HobbiesPage() {
 
       {/* 趣味と仕事の関係 */}
       <section className="mb-12">
-        <h2 className="text-2xl font-bold text-gray-900 mb-6 text-center">
+        <h2 className="mb-6 text-center text-2xl font-bold text-gray-900">
           趣味と仕事の関係
         </h2>
-        <div className="bg-white rounded-lg shadow-md p-8">
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+        <div className="rounded-lg bg-white p-8 shadow-md">
+          <div className="grid grid-cols-1 gap-8 md:grid-cols-2">
             <div>
-              <h3 className="text-lg font-semibold text-gray-900 mb-4">
+              <h3 className="mb-4 text-lg font-semibold text-gray-900">
                 趣味から得られるスキル
               </h3>
               <ul className="space-y-3">
                 <li className="flex items-start">
-                  <span className="text-green-500 mr-3">✓</span>
+                  <span className="mr-3 text-green-500">✓</span>
                   <div>
                     <span className="font-medium">創造性</span>
                     <p className="text-sm text-gray-600">
@@ -233,7 +233,7 @@ export default function HobbiesPage() {
                   </div>
                 </li>
                 <li className="flex items-start">
-                  <span className="text-green-500 mr-3">✓</span>
+                  <span className="mr-3 text-green-500">✓</span>
                   <div>
                     <span className="font-medium">問題解決力</span>
                     <p className="text-sm text-gray-600">
@@ -242,7 +242,7 @@ export default function HobbiesPage() {
                   </div>
                 </li>
                 <li className="flex items-start">
-                  <span className="text-green-500 mr-3">✓</span>
+                  <span className="mr-3 text-green-500">✓</span>
                   <div>
                     <span className="font-medium">コミュニケーション</span>
                     <p className="text-sm text-gray-600">
@@ -251,7 +251,7 @@ export default function HobbiesPage() {
                   </div>
                 </li>
                 <li className="flex items-start">
-                  <span className="text-green-500 mr-3">✓</span>
+                  <span className="mr-3 text-green-500">✓</span>
                   <div>
                     <span className="font-medium">継続学習</span>
                     <p className="text-sm text-gray-600">
@@ -262,12 +262,12 @@ export default function HobbiesPage() {
               </ul>
             </div>
             <div>
-              <h3 className="text-lg font-semibold text-gray-900 mb-4">
+              <h3 className="mb-4 text-lg font-semibold text-gray-900">
                 仕事への活かし方
               </h3>
               <ul className="space-y-3">
                 <li className="flex items-start">
-                  <span className="text-blue-500 mr-3">→</span>
+                  <span className="mr-3 text-blue-500">→</span>
                   <div>
                     <span className="font-medium">UI/UXデザイン</span>
                     <p className="text-sm text-gray-600">
@@ -276,7 +276,7 @@ export default function HobbiesPage() {
                   </div>
                 </li>
                 <li className="flex items-start">
-                  <span className="text-blue-500 mr-3">→</span>
+                  <span className="mr-3 text-blue-500">→</span>
                   <div>
                     <span className="font-medium">プロジェクト管理</span>
                     <p className="text-sm text-gray-600">
@@ -285,7 +285,7 @@ export default function HobbiesPage() {
                   </div>
                 </li>
                 <li className="flex items-start">
-                  <span className="text-blue-500 mr-3">→</span>
+                  <span className="mr-3 text-blue-500">→</span>
                   <div>
                     <span className="font-medium">チームワーク</span>
                     <p className="text-sm text-gray-600">
@@ -294,7 +294,7 @@ export default function HobbiesPage() {
                   </div>
                 </li>
                 <li className="flex items-start">
-                  <span className="text-blue-500 mr-3">→</span>
+                  <span className="mr-3 text-blue-500">→</span>
                   <div>
                     <span className="font-medium">技術向上</span>
                     <p className="text-sm text-gray-600">
@@ -309,13 +309,13 @@ export default function HobbiesPage() {
       </section>
 
       {/* 今後の目標 */}
-      <section className="bg-gray-50 rounded-lg p-8">
-        <h2 className="text-2xl font-bold text-gray-900 mb-6 text-center">
+      <section className="rounded-lg bg-gray-50 p-8">
+        <h2 className="mb-6 text-center text-2xl font-bold text-gray-900">
           今後の目標
         </h2>
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-          <div className="bg-white rounded-lg p-6 shadow-sm">
-            <h3 className="text-lg font-semibold text-gray-900 mb-3">
+        <div className="grid grid-cols-1 gap-6 md:grid-cols-2">
+          <div className="rounded-lg bg-white p-6 shadow-sm">
+            <h3 className="mb-3 text-lg font-semibold text-gray-900">
               短期目標（3ヶ月）
             </h3>
             <ul className="space-y-2 text-gray-600">
@@ -324,8 +324,8 @@ export default function HobbiesPage() {
               <li>• 料理レパートリーの拡大</li>
             </ul>
           </div>
-          <div className="bg-white rounded-lg p-6 shadow-sm">
-            <h3 className="text-lg font-semibold text-gray-900 mb-3">
+          <div className="rounded-lg bg-white p-6 shadow-sm">
+            <h3 className="mb-3 text-lg font-semibold text-gray-900">
               長期目標（1年）
             </h3>
             <ul className="space-y-2 text-gray-600">

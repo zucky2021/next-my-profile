@@ -4,16 +4,16 @@ import Link from "next/link";
 
 export default function Home() {
   return (
-    <div className="min-h-screen bg-gradient-to-br from-blue-50 to-indigo-100">
+    <article className="min-h-screen bg-gradient-to-br from-blue-50 to-indigo-100">
       <div className="container mx-auto px-4 py-8">
         {/* プロフィール画像とメインコンテンツ */}
         <div className="mx-auto max-w-4xl">
           {/* プロフィール画像セクション */}
-          <div className="mb-8 text-center">
+          <div className="mb-8 text-center" id="key-visual">
             <div className="relative inline-block">
               <Image
                 src="/main.jpg"
-                alt="鈴木 宏尭のプロフィール写真"
+                alt="プロフィール写真"
                 width={400}
                 height={400}
                 priority
@@ -32,8 +32,10 @@ export default function Home() {
             <div className="mx-auto h-1 w-24 rounded-full bg-blue-600"></div>
           </div>
 
-          {/* 自己紹介 */}
-          <div className="mb-8 rounded-xl bg-white p-8 shadow-lg">
+          <section
+            className="mb-8 rounded-xl bg-white p-8 shadow-lg"
+            id="self-introduction"
+          >
             <h2 className="mb-4 text-2xl font-bold text-gray-900">はじめに</h2>
             <p className="mb-6 leading-relaxed text-gray-700">
               ご覧いただきありがとうございます。三重県出身のフルスタックエンジニアの鈴木宏尭と申します。
@@ -62,10 +64,12 @@ export default function Home() {
             <div className="border-t border-gray-200 pt-6">
               <SnsBtn />
             </div>
-          </div>
+          </section>
 
-          {/* ナビゲーションカード */}
-          <div className="grid grid-cols-1 gap-6 md:grid-cols-3">
+          <section
+            className="grid grid-cols-1 gap-6 md:grid-cols-3"
+            id="navigation-cards"
+          >
             <Link
               href="/career"
               className="group rounded-xl bg-white p-6 shadow-lg transition-shadow duration-300 hover:shadow-xl"
@@ -148,9 +152,9 @@ export default function Home() {
                 強みやスキル、これまでの取り組みについて
               </p>
             </Link>
-          </div>
+          </section>
         </div>
       </div>
-    </div>
+    </article>
   );
 }

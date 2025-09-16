@@ -1,0 +1,13 @@
+#!/bin/sh
+
+echo "[husky] pre-push running..."
+
+echo "Running tests..."
+npx playwright test
+if [ $? -ne 0 ]; then
+  echo "Tests failed. Aborting push."
+  exit 1
+fi
+
+echo "Tests passed. Continuing push."
+exit 0

@@ -1,30 +1,11 @@
-"use client";
-
 import Link from "next/link";
-import { useState } from "react";
 
 const SnsBtn = () => {
-  const [copiedUrl, setCopiedUrl] = useState(false);
-
   const xUrl = "https://x.com/kanbaru2024";
-
   const instagramUrl = "https://www.instagram.com/zucky_2025/";
 
-  /**
-   * URLをクリップボードにコピー
-   */
-  const copyToClipboard = async () => {
-    try {
-      await navigator.clipboard.writeText(window.location.href);
-      setCopiedUrl(true);
-      setTimeout(() => setCopiedUrl(false), 2000);
-    } catch (err) {
-      console.error("URLのコピーに失敗しました:", err);
-    }
-  };
-
   return (
-    <div className="flex items-center gap-4">
+    <div className="flex items-center gap-4" id="sns-btn">
       <Link
         href={xUrl}
         target="_blank"
@@ -64,31 +45,6 @@ const SnsBtn = () => {
         </svg>
         <span className="text-sm">Instagram</span>
       </Link>
-
-      <button
-        type="button"
-        onClick={copyToClipboard}
-        className="flex items-center gap-2 rounded-lg bg-gray-200 px-4 py-2 text-gray-700 transition-colors duration-200 hover:bg-gray-300"
-        aria-label="URLをコピー"
-      >
-        <svg
-          className="h-4 w-4"
-          fill="none"
-          stroke="currentColor"
-          viewBox="0 0 24 24"
-          aria-hidden="true"
-        >
-          <path
-            strokeLinecap="round"
-            strokeLinejoin="round"
-            strokeWidth={2}
-            d="M8 16H6a2 2 0 01-2-2V6a2 2 0 012-2h8a2 2 0 012 2v2m-6 12h8a2 2 0 002-2v-8a2 2 0 00-2-2h-8a2 2 0 00-2 2v8a2 2 0 002 2z"
-          />
-        </svg>
-        <span className="text-sm">
-          {copiedUrl ? "コピー済み!" : "URLコピー"}
-        </span>
-      </button>
     </div>
   );
 };
