@@ -1,4 +1,5 @@
 import { Metadata } from "next";
+import { getHobbies } from "@/features/hobby/getHobbies";
 
 export const metadata: Metadata = {
   title: "趣味 | 鈴木宏尭",
@@ -13,111 +14,9 @@ export const metadata: Metadata = {
   },
 };
 
-// 趣味の型定義
-type Hobby = {
-  id: string;
-  title: string;
-  description: string;
-  icon: string;
-  category: string;
-  details: string[];
-  relatedSkills: string[];
-};
+export default async function HobbiesPage() {
+  const hobbies = await getHobbies();
 
-// 趣味データ
-const hobbies: Hobby[] = [
-  {
-    id: "1",
-    title: "プログラミング",
-    description:
-      "新しい技術を学び、個人プロジェクトを開発することが大好きです。",
-    icon: "💻",
-    category: "技術",
-    details: [
-      "新しいフレームワークやライブラリの学習",
-      "オープンソースプロジェクトへの貢献",
-      "個人アプリケーションの開発",
-      "技術ブログの執筆",
-    ],
-    relatedSkills: ["React", "Next.js", "TypeScript", "Node.js"],
-  },
-  {
-    id: "2",
-    title: "読書",
-    description: "技術書から小説まで、幅広いジャンルの本を読むことが好きです。",
-    icon: "📚",
-    category: "学習",
-    details: [
-      "技術書（プログラミング、デザイン、アーキテクチャ）",
-      "ビジネス書（リーダーシップ、マネジメント）",
-      "小説（SF、ミステリー、ファンタジー）",
-      "自己啓発書",
-    ],
-    relatedSkills: ["知識習得", "思考力", "文章理解力"],
-  },
-  {
-    id: "3",
-    title: "写真撮影",
-    description:
-      "風景や街並みを撮影することが好きで、新しい視点を見つけることを楽しんでいます。",
-    icon: "📷",
-    category: "アート",
-    details: [
-      "風景写真（自然、都市、建築）",
-      "ストリートフォトグラフィ",
-      "ポートレート撮影",
-      "写真編集・加工",
-    ],
-    relatedSkills: ["構図", "ライティング", "Adobe Lightroom", "Photoshop"],
-  },
-  {
-    id: "4",
-    title: "旅行",
-    description:
-      "新しい場所を訪れ、異なる文化や人々との出会いを楽しんでいます。",
-    icon: "✈️",
-    category: "体験",
-    details: [
-      "国内旅行（温泉、観光地、グルメ）",
-      "海外旅行（アジア、ヨーロッパ）",
-      "一人旅",
-      "写真撮影を兼ねた旅行",
-    ],
-    relatedSkills: ["計画力", "適応力", "コミュニケーション", "英語"],
-  },
-  {
-    id: "5",
-    title: "料理",
-    description:
-      "新しいレシピに挑戦し、家族や友人に料理を振る舞うことが好きです。",
-    icon: "👨‍🍳",
-    category: "生活",
-    details: [
-      "和食（定番料理から創作料理まで）",
-      "イタリアン、フレンチ",
-      "アジア料理（タイ、ベトナム、韓国）",
-      "パン・お菓子作り",
-    ],
-    relatedSkills: ["創造力", "段取り力", "味覚", "衛生管理"],
-  },
-  {
-    id: "6",
-    title: "音楽",
-    description:
-      "様々なジャンルの音楽を聴くことが好きで、時には楽器演奏も楽しみます。",
-    icon: "🎵",
-    category: "エンターテインメント",
-    details: [
-      "ロック、ポップス、ジャズ",
-      "クラシック音楽",
-      "ギター演奏（アコースティック）",
-      "音楽イベント参加",
-    ],
-    relatedSkills: ["リズム感", "集中力", "表現力"],
-  },
-];
-
-export default function HobbiesPage() {
   return (
     <div className="container mx-auto max-w-6xl px-4 py-8">
       <div className="mb-12 text-center">
@@ -144,9 +43,6 @@ export default function HobbiesPage() {
                   <h2 className="text-xl font-semibold text-gray-900">
                     {hobby.title}
                   </h2>
-                  <span className="rounded bg-blue-100 px-2 py-1 text-sm text-blue-600">
-                    {hobby.category}
-                  </span>
                 </div>
               </div>
 
@@ -195,17 +91,18 @@ export default function HobbiesPage() {
       {/* 趣味の統計 */}
       <section className="mb-12 rounded-lg bg-gradient-to-r from-blue-600 to-purple-600 p-8 text-white">
         <h2 className="mb-6 text-center text-2xl font-bold">趣味の統計</h2>
-        <div className="grid grid-cols-1 gap-8 md:grid-cols-3">
+        <div className="grid grid-cols-1 gap-8 md:grid-cols-2">
           <div className="text-center">
-            <div className="mb-2 text-4xl font-bold">6</div>
+            <div className="mb-2 text-4xl font-bold">{hobbies.length}</div>
             <div className="text-blue-100">主要な趣味</div>
           </div>
           <div className="text-center">
-            <div className="mb-2 text-4xl font-bold">4</div>
-            <div className="text-blue-100">カテゴリ</div>
-          </div>
-          <div className="text-center">
-            <div className="mb-2 text-4xl font-bold">20+</div>
+            <div className="mb-2 text-4xl font-bold">
+              {
+                [...new Set(hobbies.flatMap((hobby) => hobby.relatedSkills))]
+                  .length
+              }
+            </div>
             <div className="text-blue-100">関連スキル</div>
           </div>
         </div>

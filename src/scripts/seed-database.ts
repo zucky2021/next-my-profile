@@ -3,6 +3,7 @@ import { careerSeedData } from "../features/career/seed-data";
 import { achievementSeedData } from "../features/achievement/seed-data";
 import { skillTagSeedData } from "../features/skill-tag/seed-data";
 import { qualificationSeedData } from "../features/qualification/seed-data";
+import { hobbiesSeedData } from "../features/hobby/seed-data";
 import { EmploymentType } from "@prisma/client";
 
 /**
@@ -12,7 +13,7 @@ const clearDatabase = async () => {
   console.log("🗑️  既存データをクリア中...");
 
   await prisma.$executeRaw`
-    TRUNCATE TABLE "achievements", "skill_tags", "qualifications", "careers" 
+    TRUNCATE TABLE "achievements", "skill_tags", "qualifications", "careers", "hobbies" 
     RESTART IDENTITY CASCADE
   `;
 
@@ -68,6 +69,21 @@ const seedQualifications = async () => {
 };
 
 /**
+ * 趣味データの作成
+ */
+const seedHobbies = async () => {
+  console.log("🎨 趣味データを作成中...");
+
+  const result = await prisma.hobby.createMany({
+    data: hobbiesSeedData,
+    skipDuplicates: true,
+  });
+
+  console.log(`✅ ${result.count}件の趣味を作成しました`);
+  return result;
+};
+
+/**
  * 実績データの作成（スキルタグとのリレーション含む）
  */
 const seedAchievements = async () => {
@@ -102,12 +118,14 @@ const displaySummary = (results: {
   careers: number;
   skillTags: number;
   qualifications: number;
+  hobbies: number;
   achievements: number;
 }) => {
   console.log("\n📊 シード結果サマリー:");
   console.log(`   経歴: ${results.careers}件`);
   console.log(`   スキルタグ: ${results.skillTags}件`);
   console.log(`   資格: ${results.qualifications}件`);
+  console.log(`   趣味: ${results.hobbies}件`);
   console.log(`   実績: ${results.achievements}件`);
   console.log("\n🎉 データベースのシードが完了しました！");
 };
@@ -121,8 +139,13 @@ const main = async () => {
   try {
     await clearDatabase();
 
-    const [careerResult, skillTagResult, qualificationResult] =
-      await Promise.all([seedCareers(), seedSkillTags(), seedQualifications()]);
+    const [careerResult, skillTagResult, qualificationResult, hobbiesResult] =
+      await Promise.all([
+        seedCareers(),
+        seedSkillTags(),
+        seedQualifications(),
+        seedHobbies(),
+      ]);
 
     const achievementResult = await seedAchievements();
 
@@ -130,6 +153,7 @@ const main = async () => {
       careers: careerResult.count,
       skillTags: skillTagResult.count,
       qualifications: qualificationResult.count,
+      hobbies: hobbiesResult.count,
       achievements: achievementResult.count,
     });
   } catch (error) {

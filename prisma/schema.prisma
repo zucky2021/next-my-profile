@@ -69,6 +69,25 @@ model Qualification {
   @@map("qualifications")
 }
 
+/// 趣味テーブル
+model Hobby {
+  id            Int      @id @default(autoincrement())
+  /// タイトル
+  title         String
+  /// 説明
+  description   String
+  /// アイコン（絵文字）
+  icon          String
+  /// 詳細（JSON配列）
+  details       String[] @db.Text
+  /// 関連スキル（JSON配列）
+  relatedSkills String[] @db.Text
+  createdAt     DateTime @default(now())
+  updatedAt     DateTime @updatedAt
+
+  @@map("hobbies")
+}
+
 /// 雇用形態
 enum EmploymentType {
   FULL_TIME // 正社員
