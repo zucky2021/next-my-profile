@@ -20,23 +20,25 @@ test.describe("ナビゲーション", () => {
     await page.goto("/");
     await expect(page.locator("h1")).toContainText("鈴木 宏尭");
 
+    const navigation = page.locator("#header-navigation");
+
     // 経歴ページへ移動
-    await page.getByRole("link", { name: "経歴" }).click();
+    await navigation.getByRole("link", { name: "経歴" }).click();
     await expect(page).toHaveURL("/career");
     await expect(page.locator("h1")).toContainText("経歴");
 
     // 趣味ページへ移動
-    await page.getByRole("link", { name: "趣味" }).click();
+    await navigation.getByRole("link", { name: "趣味" }).click();
     await expect(page).toHaveURL("/hobbies");
     await expect(page.locator("h1")).toContainText("趣味");
 
     // 自己PRページへ移動
-    await page.getByRole("link", { name: "自己PR" }).click();
+    await navigation.getByRole("link", { name: "自己PR" }).click();
     await expect(page).toHaveURL("/self-pr");
     await expect(page.locator("h1")).toContainText("自己PR");
 
     // ホームページに戻る
-    await page.getByRole("link", { name: "ホーム" }).click();
+    await navigation.getByRole("link", { name: "ホーム" }).click();
     await expect(page).toHaveURL("/");
     await expect(page.locator("h1")).toContainText("鈴木 宏尭");
   });
@@ -61,7 +63,7 @@ test.describe("ナビゲーション", () => {
       await expect(mobileMenu.first()).toBeVisible();
 
       // モバイルメニュー内のリンクをクリック
-      await page.click('[aria-label="モバイルメニュー"] a[href="/career"]');
+      await mobileMenu.getByRole("link", { name: "経歴" }).click();
       await expect(page).toHaveURL("/career");
     }
   });
