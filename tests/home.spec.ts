@@ -14,10 +14,9 @@ test.describe("ホームページ", () => {
     const headerNavigation = page.locator("#header-navigation");
     await expect(headerNavigation).toBeVisible();
 
-    const activeLink = headerNavigation.locator('a:has-text("ホーム")').first();
-    const classAttribute = await activeLink.getAttribute("class");
-    expect(classAttribute).toContain("bg-blue-50");
-    expect(classAttribute).toContain("text-blue-600");
+    const activeLink = headerNavigation.getByRole("link", { name: "ホーム" });
+    expect(activeLink).toContainClass("bg-blue-50");
+    expect(activeLink).toContainClass("text-blue-600");
   });
 
   test("プロフィール画像が表示される", async ({ page }) => {
