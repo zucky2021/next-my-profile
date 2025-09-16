@@ -1,4 +1,3 @@
-import Link from "next/link";
 import { PortfolioSection } from "./components/Portfolio";
 import { SkillsSection } from "./components/Skill";
 
@@ -28,29 +27,29 @@ export default function SelfPRPage() {
               <p>
                 私は常に最新の技術やトレンドを把握するため、IT関連のメルマガを購読し、日々情報収集を行っており、
                 <br />
-                <Link
+                <a
                   href="https://aws.amazon.com/jp/summits/japan/"
                   target="_blank"
                   className="text-blue-600 transition-colors hover:text-blue-800"
                 >
                   AWS Summit Japan
-                </Link>
+                </a>
                 に参加したり、
-                <Link
+                <a
                   href="https://connpass.com/dashboard/"
                   target="_blank"
                   className="text-blue-600 transition-colors hover:text-blue-800"
                 >
                   Connpass
-                </Link>
+                </a>
                 や
-                <Link
+                <a
                   href="https://techplay.jp/"
                   target="_blank"
                   className="text-blue-600 transition-colors hover:text-blue-800"
                 >
                   TechPlay
-                </Link>
+                </a>
                 などの技術イベントにも積極的に参加し、友人から得た情報も活用して、新しい技術のキャッチアップを続けています。
                 <br />
                 プログラミングスクールやUdemyなどのコミュニティを通じて、仲間と共に学び、成長しています。

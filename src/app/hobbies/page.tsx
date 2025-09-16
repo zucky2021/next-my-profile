@@ -1,10 +1,10 @@
 import { Metadata } from "next";
 
 export const metadata: Metadata = {
-  title: "趣味 | My Profile",
+  title: "趣味 | 鈴木宏尭",
   description: "私の趣味や興味のあること",
   openGraph: {
-    title: "趣味 | My Profile",
+    title: "趣味 | 鈴木宏尭",
     description: "私の趣味や興味のあること",
     type: "website",
   },

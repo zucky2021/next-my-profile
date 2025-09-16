@@ -21,22 +21,22 @@ test.describe("ナビゲーション", () => {
     await expect(page.locator("h1")).toContainText("鈴木 宏尭");
 
     // 経歴ページへ移動
-    await page.click('nav a:has-text("経歴")');
+    await page.getByRole("link", { name: "経歴" }).click();
     await expect(page).toHaveURL("/career");
     await expect(page.locator("h1")).toContainText("経歴");
 
     // 趣味ページへ移動
-    await page.click('nav a:has-text("趣味")');
+    await page.getByRole("link", { name: "趣味" }).click();
     await expect(page).toHaveURL("/hobbies");
     await expect(page.locator("h1")).toContainText("趣味");
 
     // 自己PRページへ移動
-    await page.click('nav a:has-text("自己PR")');
+    await page.getByRole("link", { name: "自己PR" }).click();
     await expect(page).toHaveURL("/self-pr");
     await expect(page.locator("h1")).toContainText("自己PR");
 
     // ホームページに戻る
-    await page.click('nav a:has-text("ホーム")');
+    await page.getByRole("link", { name: "ホーム" }).click();
     await expect(page).toHaveURL("/");
     await expect(page.locator("h1")).toContainText("鈴木 宏尭");
   });
