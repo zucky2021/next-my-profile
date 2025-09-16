@@ -14,8 +14,15 @@
 
 ### ディレクトリ
 
-- **tests/**に配置
+- **/tests/**に配置
 
 ### ファイル命名
 
 - <ページ名>.spec.ts
+
+### セレクター優先順位
+
+1. getByRole（name オプション必須）
+2. getByLabel / getByPlaceholder / getByText
+3. ID / Class name
+4. data-testid（やむを得ない場合の最終手段）

@@ -4,6 +4,14 @@
 
 - End-to-End テストの[Playwright](https://playwright.dev/)に関するドキュメントを管理
 
+## 前提
+
+- 初回はブラウザのインストールが必要
+
+```sh
+npx playwright install --with-deps
+```
+
 ## よく使用するコマンド
 
 ### 通常実行
@@ -12,7 +20,7 @@
 npx playwright test
 ```
 
-### UI好きテスト実行
+### UI付きテスト実行
 
 ```sh
 npx playwright test --ui
