@@ -1,4 +1,6 @@
-export const hobbiesSeedData = [
+import { Prisma } from "@prisma/client";
+
+export const hobbiesSeedData: Prisma.HobbyCreateManyInput[] = [
   {
     title: "プログラミング",
     description:

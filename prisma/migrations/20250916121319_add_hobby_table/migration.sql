@@ -11,3 +11,6 @@ CREATE TABLE "public"."hobbies" (
 
     CONSTRAINT "hobbies_pkey" PRIMARY KEY ("id")
 );
+
+-- CreateIndex
+CREATE UNIQUE INDEX "hobbies_title_key" ON "public"."hobbies"("title");
