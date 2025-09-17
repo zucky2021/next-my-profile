@@ -26,15 +26,18 @@ export default async function HobbiesPage() {
         </p>
       </div>
 
-      {/* 趣味一覧 */}
-      <div className="mb-12 grid grid-cols-1 gap-8 md:grid-cols-2 lg:grid-cols-3">
+      <ul
+        className="mb-12 grid grid-cols-1 gap-8 md:grid-cols-2 lg:grid-cols-3"
+        id="hobbies"
+        aria-label="趣味一覧"
+      >
         {hobbies.map((hobby) => (
-          <div
+          <li
             key={hobby.id}
             className="overflow-hidden rounded-lg bg-white shadow-md transition-shadow hover:shadow-lg"
+            aria-label="趣味カード"
           >
             <div className="p-6">
-              {/* アイコンとタイトル */}
               <div className="mb-4 flex items-center">
                 <span className="mr-3 text-3xl" aria-hidden="true">
                   {hobby.icon}
@@ -46,10 +49,8 @@ export default async function HobbiesPage() {
                 </div>
               </div>
 
-              {/* 説明 */}
               <p className="mb-4 text-gray-600">{hobby.description}</p>
 
-              {/* 詳細 */}
               <div className="mb-4">
                 <h3 className="mb-2 text-sm font-semibold text-gray-900">
                   具体的な活動
@@ -67,7 +68,6 @@ export default async function HobbiesPage() {
                 </ul>
               </div>
 
-              {/* 関連スキル */}
               <div>
                 <h3 className="mb-2 text-sm font-semibold text-gray-900">
                   関連スキル
@@ -84,20 +84,24 @@ export default async function HobbiesPage() {
                 </div>
               </div>
             </div>
-          </div>
+          </li>
         ))}
-      </div>
+      </ul>
 
-      {/* 趣味の統計 */}
-      <section className="mb-12 rounded-lg bg-gradient-to-r from-blue-600 to-purple-600 p-8 text-white">
+      <section
+        className="mb-12 rounded-lg bg-gradient-to-r from-blue-600 to-purple-600 p-8 text-white"
+        aria-label="趣味の統計"
+      >
         <h2 className="mb-6 text-center text-2xl font-bold">趣味の統計</h2>
         <div className="grid grid-cols-1 gap-8 md:grid-cols-2">
           <div className="text-center">
-            <div className="mb-2 text-4xl font-bold">{hobbies.length}</div>
+            <div className="mb-2 text-4xl font-bold" aria-label="主要な趣味数">
+              {hobbies.length}
+            </div>
             <div className="text-blue-100">主要な趣味</div>
           </div>
           <div className="text-center">
-            <div className="mb-2 text-4xl font-bold">
+            <div className="mb-2 text-4xl font-bold" aria-label="関連スキル数">
               {
                 [...new Set(hobbies.flatMap((hobby) => hobby.relatedSkills))]
                   .length
@@ -108,15 +112,17 @@ export default async function HobbiesPage() {
         </div>
       </section>
 
-      {/* 趣味と仕事の関係 */}
-      <section className="mb-12">
+      <section className="mb-12" aria-label="趣味と仕事の関係">
         <h2 className="mb-6 text-center text-2xl font-bold text-gray-900">
           趣味と仕事の関係
         </h2>
         <div className="rounded-lg bg-white p-8 shadow-md">
           <div className="grid grid-cols-1 gap-8 md:grid-cols-2">
             <div>
-              <h3 className="mb-4 text-lg font-semibold text-gray-900">
+              <h3
+                className="mb-4 text-lg font-semibold text-gray-900"
+                aria-label="趣味から得られるスキル"
+              >
                 趣味から得られるスキル
               </h3>
               <ul className="space-y-3">
@@ -159,7 +165,10 @@ export default async function HobbiesPage() {
               </ul>
             </div>
             <div>
-              <h3 className="mb-4 text-lg font-semibold text-gray-900">
+              <h3
+                className="mb-4 text-lg font-semibold text-gray-900"
+                aria-label="仕事への活かし方"
+              >
                 仕事への活かし方
               </h3>
               <ul className="space-y-3">
@@ -205,14 +214,16 @@ export default async function HobbiesPage() {
         </div>
       </section>
 
-      {/* 今後の目標 */}
-      <section className="rounded-lg bg-gray-50 p-8">
+      <section className="rounded-lg bg-gray-50 p-8" aria-label="今後の目標">
         <h2 className="mb-6 text-center text-2xl font-bold text-gray-900">
           今後の目標
         </h2>
         <div className="grid grid-cols-1 gap-6 md:grid-cols-2">
           <div className="rounded-lg bg-white p-6 shadow-sm">
-            <h3 className="mb-3 text-lg font-semibold text-gray-900">
+            <h3
+              className="mb-3 text-lg font-semibold text-gray-900"
+              aria-label="短期目標"
+            >
               短期目標（3ヶ月）
             </h3>
             <ul className="space-y-2 text-gray-600">
@@ -222,7 +233,10 @@ export default async function HobbiesPage() {
             </ul>
           </div>
           <div className="rounded-lg bg-white p-6 shadow-sm">
-            <h3 className="mb-3 text-lg font-semibold text-gray-900">
+            <h3
+              className="mb-3 text-lg font-semibold text-gray-900"
+              aria-label="長期目標"
+            >
               長期目標（1年）
             </h3>
             <ul className="space-y-2 text-gray-600">
