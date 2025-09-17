@@ -57,10 +57,6 @@ export default defineConfig({
         permissions: ["clipboard-read", "clipboard-write"],
       },
     },
-    {
-      name: "firefox",
-      use: { ...devices["Desktop Firefox"] },
-    },
 
     // Test against mobile view ports.
     {

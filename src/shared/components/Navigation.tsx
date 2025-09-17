@@ -11,8 +11,8 @@ export default function Navigation() {
   const navigation = [
     { name: "ホーム", href: "/" },
     { name: "経歴", href: "/career" },
-    { name: "趣味", href: "/hobbies" },
     { name: "自己PR", href: "/self-pr" },
+    { name: "趣味", href: "/hobbies" },
   ];
 
   const isActive = (href: string) => {
@@ -50,6 +50,7 @@ export default function Navigation() {
                       ? "bg-blue-50 text-blue-600"
                       : "text-gray-700 hover:bg-gray-50 hover:text-blue-600"
                   }`}
+                  aria-current={isActive(item.href) ? "page" : undefined}
                 >
                   {item.name}
                 </Link>
@@ -63,6 +64,7 @@ export default function Navigation() {
               isMenuOpen ? "モバイルメニューを閉じる" : "モバイルメニューを開く"
             }
             aria-expanded={isMenuOpen}
+            aria-controls="mobile-menu"
             className="inline-flex items-center justify-center rounded-md p-2 text-gray-700 transition-colors duration-200 hover:bg-gray-50 hover:text-blue-600 focus:ring-2 focus:ring-blue-500 focus:outline-none focus:ring-inset md:hidden"
           >
             <div className="relative h-6 w-6">
@@ -87,6 +89,7 @@ export default function Navigation() {
       </div>
 
       <div
+        id="mobile-menu"
         className={`absolute right-0 left-0 z-50 overflow-hidden border-t border-gray-200 bg-white shadow-lg transition-all duration-300 ease-in-out md:hidden ${
           isMenuOpen
             ? "max-h-64 translate-y-0 opacity-100"
@@ -114,6 +117,7 @@ export default function Navigation() {
                     ? "bg-blue-50 text-blue-600"
                     : "text-gray-700 hover:bg-gray-50 hover:text-blue-600"
                 }`}
+                aria-current={isActive(item.href) ? "page" : undefined}
                 onClick={() => setIsMenuOpen(false)}
               >
                 {item.name}
