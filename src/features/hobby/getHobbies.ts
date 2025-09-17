@@ -6,7 +6,9 @@ import { Hobby } from "@prisma/client";
  * @returns 趣味一覧（表示順序でソート）
  */
 export async function getHobbies(): Promise<Hobby[]> {
-  const hobbies = await prisma.hobby.findMany();
+  const hobbies = await prisma.hobby.findMany({
+    orderBy: { id: "asc" },
+  });
 
   return hobbies;
 }
