@@ -26,15 +26,15 @@ const handler = NextAuth({
 
         const ADMIN_USERNAME =
           process.env.ADMIN_USERNAME || "default-admin-name";
-        const ADMIN_PASSWORD_HASH =
-          process.env.ADMIN_PASSWORD_HASH || "default-admin-password-hash";
+        const ADMIN_PASSWORD =
+          process.env.ADMIN_PASSWORD || "default-admin-password-hash";
 
         console.log("ADMIN_USERNAME", ADMIN_USERNAME);
-        console.log("ADMIN_PASSWORD_HASH", ADMIN_PASSWORD_HASH);
+        console.log("ADMIN_PASSWORD", ADMIN_PASSWORD);
 
         if (
           credentials.username !== ADMIN_USERNAME ||
-          credentials.password !== ADMIN_PASSWORD_HASH
+          credentials.password !== ADMIN_PASSWORD
         ) {
           return null;
         }
