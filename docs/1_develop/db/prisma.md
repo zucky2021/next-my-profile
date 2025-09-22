@@ -25,7 +25,7 @@ npx prisma format
 
 ```sh
 vercel env pull .env.production
-npx dotenv -e .env.production -- npx prisma migrate deploy
+npx dotenv -e .env.production -- prisma migrate deploy
 ```
 
 ### 初期データ登録
@@ -40,7 +40,7 @@ npx prisma db seed
 
 ```sh
 vercel env pull .env.production
-npx dotenv -e .env.production -- npx prisma db seed
+npx dotenv -e .env.production -- prisma db seed
 ```
 
 ### リセット
