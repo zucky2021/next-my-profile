@@ -24,13 +24,11 @@ const handler = NextAuth({
           return null;
         }
 
-        const ADMIN_USERNAME =
-          process.env.ADMIN_USERNAME || "default-admin-name";
-        const ADMIN_PASSWORD =
-          process.env.ADMIN_PASSWORD || "default-admin-password-hash";
-
-        console.log("ADMIN_USERNAME", ADMIN_USERNAME);
-        console.log("ADMIN_PASSWORD", ADMIN_PASSWORD);
+        const ADMIN_USERNAME = process.env.ADMIN_USERNAME;
+        const ADMIN_PASSWORD = process.env.ADMIN_PASSWORD;
+        if (!ADMIN_USERNAME || !ADMIN_PASSWORD) {
+          throw new Error("Missing ADMIN_USERNAME or ADMIN_PASSWORD");
+        }
 
         if (
           credentials.username !== ADMIN_USERNAME ||
@@ -67,7 +65,7 @@ const handler = NextAuth({
   pages: {
     signIn: "/auth/signin",
   },
-  secret: process.env.NEXTAUTH_SECRET || "next-auth-secret",
+  secret: process.env.NEXTAUTH_SECRET,
 });
 
 export { handler as GET, handler as POST };

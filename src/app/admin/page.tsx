@@ -2,11 +2,19 @@
 
 import { useSession, signOut } from "next-auth/react";
 import { useRouter } from "next/navigation";
+import { useEffect } from "react";
 
 const AdminPage = () => {
   const { data: session, status } = useSession();
   const router = useRouter();
   const loading = status === "loading";
+
+  useEffect(() => {
+    if (status === "unauthenticated") {
+      router.replace("/auth/signin");
+    }
+  }, [status, router]);
+  if (status === "unauthenticated") return null;
 
   const handleLogout = async () => {
     await signOut({ callbackUrl: "/" });
@@ -21,11 +29,6 @@ const AdminPage = () => {
         </div>
       </div>
     );
-  }
-
-  if (status === "unauthenticated") {
-    router.push("/auth/signin");
-    return null;
   }
 
   if (!session) {
