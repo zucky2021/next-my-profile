@@ -1,0 +1,45 @@
+{
+  "mcpServers": {
+    "github": {
+      "command": "npx",
+      "args": ["-y", "@modelcontextprotocol/server-github"],
+      "env": {
+        "GITHUB_PERSONAL_ACCESS_TOKEN": "${env:GITHUB_PERSONAL_ACCESS_TOKEN}"
+      }
+    },
+    "playwright": {
+      "command": "npx",
+      "args": ["@playwright/mcp@latest"]
+    },
+    "context7": {
+      "command": "npx",
+      "args": ["-y", "@upstash/context7-mcp@latest"]
+    },
+    "serena": {
+      "command": "uvx",
+      "args": [
+        "--from",
+        "git+https://github.com/oraios/serena",
+        "serena-mcp-server",
+        "--context",
+        "ide-assistant"
+      ]
+    },
+    "supabase": {
+      "command": "npx",
+      "args": [
+        "-y",
+        "@supabase/mcp-server-supabase@latest",
+        "--access-token",
+        "${env:SUPABASE_PERSONAL_ACCESS_TOKEN}"
+      ]
+    },
+    "apidog": {
+      "command": "npx",
+      "args": ["-y", "apidog-mcp-server@latest", "--project-id=1058162"],
+      "env": {
+        "APIDOG_ACCESS_TOKEN": "${env:APIDOG_ACCESS_TOKEN}"
+      }
+    }
+  }
+}
