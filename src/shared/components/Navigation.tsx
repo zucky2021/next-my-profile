@@ -29,13 +29,20 @@ export default function Navigation() {
     >
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         <div className="flex h-16 justify-between">
-          <Link
-            href="/"
-            className="flex items-center font-serif text-xl font-bold text-gray-900"
-            id="header-logo"
-          >
-            鈴木 宏尭
-          </Link>
+          <div className="flex items-center space-x-2">
+            <Link
+              href="/"
+              className="flex items-center font-serif text-xl font-bold text-gray-900"
+              id="header-logo"
+            >
+              鈴木 宏尭
+            </Link>
+            {process.env.NODE_ENV === "development" && (
+              <span className="h-fit rounded-md bg-sky-400 p-1 text-sm text-white">
+                {process.env.NODE_ENV}
+              </span>
+            )}
+          </div>
 
           <ul
             className="hidden items-center space-x-8 md:flex"
