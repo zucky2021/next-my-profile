@@ -7,7 +7,7 @@ import prisma from "@/shared/lib/prisma";
  */
 const PUT = async (
   request: NextRequest,
-  { params }: { params: { id: string } }
+  { params }: { params: Promise<{ id: string }> }
 ) => {
   try {
     const session = await getServerSession();
@@ -15,7 +15,8 @@ const PUT = async (
       return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
     }
 
-    const id = parseInt(params.id);
+    const resolvedParams = await params;
+    const id = parseInt(resolvedParams.id);
     if (isNaN(id)) {
       return NextResponse.json(
         { error: "Invalid skill tag ID" },
@@ -80,7 +81,7 @@ const PUT = async (
  */
 const DELETE = async (
   request: NextRequest,
-  { params }: { params: { id: string } }
+  { params }: { params: Promise<{ id: string }> }
 ) => {
   try {
     const session = await getServerSession();
@@ -88,7 +89,8 @@ const DELETE = async (
       return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
     }
 
-    const id = parseInt(params.id);
+    const resolvedParams = await params;
+    const id = parseInt(resolvedParams.id);
     if (isNaN(id)) {
       return NextResponse.json(
         { error: "Invalid skill tag ID" },
