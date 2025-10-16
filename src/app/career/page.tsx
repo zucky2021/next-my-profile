@@ -2,6 +2,7 @@ import { getAchievements } from "@/features/achievement/getAchievements";
 import { getCareers } from "@/features/career/getCareers";
 import { Metadata } from "next";
 import React from "react";
+import { CareerList } from "./components/CareerList";
 
 export const metadata: Metadata = {
   title: "経歴 | 鈴木宏尭",
@@ -61,46 +62,7 @@ const CareerPage = async () => {
           主要業務実績
         </h2>
 
-        <ul className="space-y-6" aria-label="主要業務実績リスト">
-          {achievements?.map((achievement) => (
-            <li
-              key={achievement.id}
-              className="rounded-lg border-l-4 border-green-500 bg-white p-6 shadow-md"
-              aria-label="主要業務実績"
-            >
-              <p className="mb-2 rounded-full text-gray-600">
-                {achievement.startDate.toLocaleDateString("ja-JP")} -{" "}
-                {achievement.endDate
-                  ? achievement.endDate.toLocaleDateString("ja-JP")
-                  : "現在"}
-              </p>
-              <p className="mb-4 text-gray-700">
-                {achievement.description.split("\n").map((line, i) => (
-                  <React.Fragment key={i}>
-                    {line}
-                    <br />
-                  </React.Fragment>
-                ))}
-              </p>
-              {achievement.skills && (
-                <ul
-                  className="flex flex-wrap gap-2"
-                  aria-label="スキルタグリスト"
-                >
-                  {achievement.skills.map((skillTag) => (
-                    <li
-                      key={skillTag.id}
-                      className="rounded bg-green-100 px-2 py-1 text-xs text-green-800"
-                      aria-label="スキルタグ"
-                    >
-                      {skillTag.name}
-                    </li>
-                  ))}
-                </ul>
-              )}
-            </li>
-          ))}
-        </ul>
+        <CareerList achievements={achievements || []} />
       </section>
 
       <section id="tech-skill">

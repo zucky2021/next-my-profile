@@ -12,31 +12,31 @@
     "format": "prettier --write ."
   },
   "dependencies": {
-    "@prisma/client": "^6.16.2",
-    "@supabase/supabase-js": "^2.58.0",
+    "@prisma/client": "^6.17.1",
+    "@supabase/supabase-js": "^2.75.0",
     "next": "^15.5.4",
     "next-auth": "^4.24.11",
-    "react": "^19.1.1",
-    "react-dom": "^19.1.1"
+    "react": "^19.2.0",
+    "react-dom": "^19.2.0"
   },
   "devDependencies": {
     "@eslint/eslintrc": "^3",
-    "@playwright/test": "^1.55.1",
-    "@tailwindcss/postcss": "4.1.13",
+    "@playwright/test": "^1.56.0",
+    "@tailwindcss/postcss": "4.1.14",
     "@types/node": "^24",
     "@types/react": "^19",
     "@types/react-dom": "^19",
     "dotenv-cli": "^10.0.0",
-    "eslint": "9.36.0",
+    "eslint": "9.37.0",
     "eslint-config-next": "15.5.4",
     "husky": "^9.1.7",
-    "lint-staged": "^16.2.3",
-    "npm-check-updates": "^18.3.0",
+    "lint-staged": "^16.2.4",
+    "npm-check-updates": "^19.0.0",
     "prettier": "^3.6.2",
     "prettier-plugin-tailwindcss": "^0.6.14",
-    "prisma": "^6.16.2",
-    "supabase": "^2.45.5",
-    "tailwindcss": "4.1.13",
+    "prisma": "^6.17.1",
+    "supabase": "^2.48.3",
+    "tailwindcss": "4.1.14",
     "tsx": "^4.20.6",
     "typescript": "^5"
   },
@@ -50,9 +50,10 @@
     ]
   },
   "engines": {
-    "node": ">=18.18.0",
-    "npm": ">=8.0.0"
+    "node": ">=20.11.0",
+    "npm": ">=10.0.0"
   },
+  "packageManager": "npm@11.6.2",
   "prisma": {
     "seed": "tsx src/scripts/seed-database.ts"
   }
