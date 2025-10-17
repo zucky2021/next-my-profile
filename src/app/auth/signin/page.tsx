@@ -41,6 +41,7 @@ const SignInPage = () => {
         }
       }
     } catch (error) {
+      console.error("Failed to login:", error);
       setError("ログインに失敗しました");
     } finally {
       setIsSubmitting(false);
