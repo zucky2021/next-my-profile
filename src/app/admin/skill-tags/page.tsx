@@ -172,14 +172,12 @@ const SkillTagPage = () => {
     }
   };
 
-  // 編集モードの開始
   const startEdit = (skillTag: SkillTag) => {
     setFormData({ name: skillTag.name });
     setEditingId(skillTag.id);
     setError(null);
   };
 
-  // 編集のキャンセル
   const cancelEdit = () => {
     resetForm();
   };
@@ -207,7 +205,6 @@ const SkillTagPage = () => {
         backUrl="/admin"
       />
 
-      {/* メインコンテンツ */}
       <main className="mx-auto max-w-7xl py-6 sm:px-6 lg:px-8">
         <div className="px-4 py-6 sm:px-0">
           <div className="space-y-6">
@@ -226,7 +223,6 @@ const SkillTagPage = () => {
               </div>
             )}
 
-            {/* フォーム */}
             <div className="rounded-lg bg-white p-6 shadow">
               <h3 className="mb-4 text-lg font-semibold text-gray-900">
                 {editingId ? "スキルタグを編集" : "新しいスキルタグを追加"}
@@ -235,6 +231,7 @@ const SkillTagPage = () => {
               <form
                 onSubmit={editingId ? handleUpdate : handleCreate}
                 className="space-y-4"
+                aria-label="スキルタグフォーム"
               >
                 <div>
                   <label
@@ -246,6 +243,7 @@ const SkillTagPage = () => {
                   <input
                     type="text"
                     id="name"
+                    name="スキルタグ名"
                     value={formData.name}
                     onChange={(e) =>
                       setFormData({ ...formData, name: e.target.value })
@@ -259,6 +257,7 @@ const SkillTagPage = () => {
                 <div className="flex space-x-3">
                   <button
                     type="submit"
+                    name={editingId ? "更新" : "追加"}
                     disabled={isSubmitting || !formData.name.trim()}
                     className="rounded-md bg-blue-600 px-4 py-2 text-white hover:bg-blue-700 disabled:cursor-not-allowed disabled:opacity-50"
                   >
@@ -286,18 +285,21 @@ const SkillTagPage = () => {
                 </h3>
               </div>
 
-              <div className="divide-y divide-gray-200">
+              <ul
+                className="divide-y divide-gray-200"
+                aria-label="スキルタグ一覧"
+              >
                 {dataLoading ? (
-                  <div className="flex items-center justify-center py-8">
+                  <li className="flex items-center justify-center py-8">
                     <div className="h-8 w-8 animate-spin rounded-full border-b-2 border-gray-900"></div>
-                  </div>
+                  </li>
                 ) : skillTags.length === 0 ? (
-                  <div className="px-6 py-8 text-center text-gray-500">
+                  <li className="px-6 py-8 text-center text-gray-500">
                     スキルタグがありません
-                  </div>
+                  </li>
                 ) : (
                   skillTags.map((skillTag) => (
-                    <div
+                    <li
                       key={skillTag.id}
                       className="flex items-center justify-between px-6 py-4"
                     >
@@ -317,20 +319,22 @@ const SkillTagPage = () => {
                         <button
                           onClick={() => startEdit(skillTag)}
                           className="rounded bg-blue-100 px-3 py-1 text-sm text-blue-700 hover:bg-blue-200"
+                          aria-label={`${skillTag.name} 編集`}
                         >
                           編集
                         </button>
                         <button
                           onClick={() => handleDelete(skillTag.id)}
                           className="rounded bg-red-100 px-3 py-1 text-sm text-red-700 hover:bg-red-200"
+                          aria-label={`${skillTag.name} 削除`}
                         >
                           削除
                         </button>
                       </div>
-                    </div>
+                    </li>
                   ))
                 )}
-              </div>
+              </ul>
             </div>
           </div>
         </div>
