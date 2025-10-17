@@ -14,7 +14,6 @@ const AdminHeader = ({
   showBackButton = false,
   backUrl = "/admin",
 }: AdminHeaderProps) => {
-  const { data: session } = useSession();
   const router = useRouter();
 
   /**
@@ -40,16 +39,13 @@ const AdminHeader = ({
             <h1 className="text-xl font-semibold text-gray-900">{title}</h1>
           </div>
           <div className="flex items-center space-x-4">
-            <span className="text-sm text-gray-700">
-              ようこそ、{session?.user?.name}さん
-            </span>
             <button
               type="button"
               onClick={handleLogout}
-              className="rounded-md bg-red-600 px-4 py-2 text-sm font-medium text-white transition-colors hover:bg-red-700"
+              className="rounded-md bg-red-600 px-3 py-2 text-sm font-medium text-white transition-colors hover:bg-red-700"
               aria-label="管理者ログアウト"
             >
-              ログアウト
+              Logout
             </button>
           </div>
         </div>

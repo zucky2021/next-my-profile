@@ -38,8 +38,12 @@ const AdminPage = () => {
       <AdminHeader title="管理者ダッシュボード" />
 
       <main className="mx-auto max-w-7xl py-6 sm:px-6 lg:px-8">
+        <div className="mb-4 text-center text-sm text-gray-700">
+          ようこそ、{session?.user?.name}さん
+        </div>
+
         <div className="px-4 py-6 sm:px-0">
-          <div className="flex h-96 items-center justify-center rounded-lg border-4 border-dashed border-gray-200">
+          <div className="flex min-h-96 items-start justify-center rounded-lg border-4 border-dashed border-gray-200 py-8">
             <div className="text-center">
               <h2 className="mb-4 text-2xl font-bold text-gray-900">
                 管理者機能
@@ -47,7 +51,7 @@ const AdminPage = () => {
               <p className="mb-6 text-gray-600">
                 コンテンツの編集機能はこちらに実装されます
               </p>
-              <div className="mx-auto grid max-w-md grid-cols-1 gap-4 md:grid-cols-2">
+              <div className="mx-auto grid max-w-md grid-cols-1 gap-4 sm:grid-cols-2">
                 <div className="rounded-lg border bg-white p-6 shadow-md">
                   <h3 className="mb-2 text-lg font-semibold text-gray-900">
                     経歴編集

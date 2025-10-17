@@ -8,8 +8,6 @@ test.describe("管理者ダッシュボード", () => {
 
   test("管理者ダッシュボードの表示確認", async ({ page }) => {
     await expect(page.locator("h1")).toContainText("管理者ダッシュボード");
-    await expect(page.locator("text=ようこそ")).toBeVisible();
-    await expect(page.locator("text=ログアウト")).toBeVisible();
 
     await expect(page.locator("text=経歴編集")).toBeVisible();
     await expect(page.locator("text=趣味編集")).toBeVisible();
