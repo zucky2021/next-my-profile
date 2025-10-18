@@ -31,7 +31,7 @@
   - Contents:
     - ダッシュボード
 - スキルタグ編集ページ
-  - URL: `/admin/skill`
+  - URL: `/admin/skill-tags`
   - Contents:
     - タグCURD
 
