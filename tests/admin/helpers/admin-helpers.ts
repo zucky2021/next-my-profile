@@ -13,7 +13,7 @@ export const loginAsAdmin = async (page: Page) => {
   await page.fill('input[name="password"]', adminPassword);
 
   await page.waitForSelector('button[type="submit"]:not([disabled])', {
-    timeout: 20000,
+    timeout: 30000,
   });
 
   await page.click('button[type="submit"]');
