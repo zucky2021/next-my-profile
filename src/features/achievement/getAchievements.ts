@@ -17,8 +17,13 @@ export const achievementSelect = {
  * 業務実績一覧を取得する
  */
 export const getAchievements = async (): Promise<AchievementListItem[]> => {
-  return prisma.achievement.findMany({
-    orderBy: { startDate: "desc" },
-    select: achievementSelect,
-  });
+  try {
+    return await prisma.achievement.findMany({
+      orderBy: { startDate: "desc" },
+      select: achievementSelect,
+    });
+  } catch (error) {
+    console.error("Failed to fetch achievements:", error);
+    return [];
+  }
 };
