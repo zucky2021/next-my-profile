@@ -33,14 +33,7 @@ export const navigateToSkillTagsPage = async (page: Page) => {
 export const logoutAdmin = async (page: Page) => {
   const logoutBtn = page.getByLabel("管理者ログアウト");
 
-  try {
-    // 通常のクリックを試行
-    await logoutBtn.click({ timeout: 5000 });
-  } catch (error) {
-    console.log("通常のクリックが失敗、forceオプションで再試行");
-    // forceオプションでクリック
-    await logoutBtn.click({ force: true });
-  }
+  await logoutBtn.click({ timeout: 50000 });
 
   await page.waitForResponse((response) => {
     return (
