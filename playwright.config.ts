@@ -1,4 +1,9 @@
 import { defineConfig, devices } from "@playwright/test";
+import dotenv from "dotenv";
+import path from "path";
+
+// Read from ".env" file.
+dotenv.config({ path: path.resolve(__dirname, ".env.local") });
 
 /**
  * @see https://playwright.dev/docs/test-configuration
@@ -68,7 +73,12 @@ export default defineConfig({
     },
     {
       name: "Mobile Safari",
-      use: { ...devices["iPhone SE (3rd gen)"] },
+      use: {
+        ...devices["iPhone SE (3rd gen)"],
+        // Safari用のタイムアウト設定
+        actionTimeout: 30000,
+        navigationTimeout: 30000,
+      },
     },
   ],
 

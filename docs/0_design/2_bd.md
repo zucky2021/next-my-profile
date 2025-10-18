@@ -5,16 +5,35 @@
 ## 画面
 
 - トップページ
-  - プロフィール
+  - URL: `/`
+  - Contents:
+    - プロフィール
 - 経歴ページ
-  - 職務要約
-  - 転職歴
-  - 業務実績
+  - URL: `/career`
+  - Contents:
+    - 職務要約
+    - 転職歴
+    - 業務実績
 - 自己PRページ
-  - 強み
-  - ポートフォリオ
-  - 資格
+  - URL: `/self-pr`
+  - Contents:
+    - 強み
+    - ポートフォリオ
+    - 資格
 - 趣味ページ
+  - URL: `/hobbies`
+  - Contents:
+    - 趣味一覧
+    - 趣味の統計
+    - 趣味と仕事の関係
+- 管理者ページ
+  - URL: `/admin`
+  - Contents:
+    - ダッシュボード
+- スキルタグ編集ページ
+  - URL: `/admin/skill-tags`
+  - Contents:
+    - タグCURD
 
 ## 技術スタック
 

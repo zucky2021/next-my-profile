@@ -16,8 +16,13 @@ export const careerSelect = {
 };
 
 export const getCareers = async () => {
-  return await prisma.career.findMany({
-    orderBy: { startDate: "desc" },
-    select: careerSelect,
-  });
+  try {
+    return await prisma.career.findMany({
+      orderBy: { startDate: "desc" },
+      select: careerSelect,
+    });
+  } catch (error) {
+    console.error("Failed to fetch careers:", error);
+    return [];
+  }
 };
