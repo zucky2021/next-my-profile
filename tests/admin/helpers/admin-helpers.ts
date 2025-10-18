@@ -12,6 +12,10 @@ export const loginAsAdmin = async (page: Page) => {
   await page.fill('input[name="username"]', adminUsername);
   await page.fill('input[name="password"]', adminPassword);
 
+  await page.waitForSelector('button[type="submit"]:not([disabled])', {
+    timeout: 15000,
+  });
+
   await page.click('button[type="submit"]');
 
   await expect(page).toHaveURL("/admin");

@@ -26,6 +26,12 @@ npx playwright test
 npx playwright test --ui
 ```
 
+### デバイスを指定して実行
+
+```sh
+npx playwright test --project="Mobile Safari"
+```
+
 ### テスト箇所を指定
 
 ```sh

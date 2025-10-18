@@ -73,7 +73,12 @@ export default defineConfig({
     },
     {
       name: "Mobile Safari",
-      use: { ...devices["iPhone SE (3rd gen)"] },
+      use: {
+        ...devices["iPhone SE (3rd gen)"],
+        // Safari用のタイムアウト設定
+        actionTimeout: 30000,
+        navigationTimeout: 30000,
+      },
     },
   ],
 
